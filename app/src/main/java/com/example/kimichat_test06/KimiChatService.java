@@ -22,9 +22,9 @@ import okhttp3.Response;
 
 public class KimiChatService {
 
-    private JSONObject jsonRequest;
-    private JSONArray parsedMessages;
-    private final String API_KEY = "sk-sUSOaFGYu65PGuvQESpShXvXi1k73ZMrpAvCjnrxEDj5wQu3";
+    private final JSONObject jsonRequest;
+    private final JSONArray parsedMessages;
+    private static final String API_KEY = "sk-sUSOaFGYu65PGuvQESpShXvXi1k73ZMrpAvCjnrxEDj5wQu3";
 
     public KimiChatService() {
         jsonRequest = initModelJSON();
@@ -51,7 +51,7 @@ public class KimiChatService {
                 JSONObject choice = choicesArray.getJSONObject(0);
                 JSONObject message = choice.getJSONObject("message");
                 String content = message.getString("content");
-                minusSend(content);
+                minusSend();
                 return content;
             } else {
                 return "Error! 回应解析失败!";
@@ -65,7 +65,7 @@ public class KimiChatService {
         }
     }
 
-    private void minusSend(String finalContent) {
+    private void minusSend() {
         parsedMessages.remove(1);
         jsonRequest.remove("messages");
         jsonRequest.put("messages", parsedMessages);
