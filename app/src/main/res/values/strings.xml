@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">kunKunChat</string>
+    <string name="jinjincainiao_ai">KunKunChat</string>
+    <string name="author">Author: ShiJin Wang</string>
+    <string name="version">Version: V1.0</string>
+    <string name="content">该项目基于Moonshot AI的API，使用Okhttp和FastJSON方法来实现与KunKunChat的交互，提供了一个简单的聊天界面。\n
+        用户输入内容后，点击发送按钮，会将内容发送给KunKunChat，KunKunChat会返回一个回复内容。\n
+        长按右上角可以清楚当前聊天记录。</string>
+</resources>

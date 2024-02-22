@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#F7F7F7</color>
+
+    <color name="receiveMsg">#FFFFFF</color>
+    <color name="sendMsg">#D5E6DF</color>
+    <color name="textColor">#191919</color>
+    <color name="sendBtn">#14C254</color>
+    <color name="barColor">#FFFFFF</color>
+
+    <color name="typeColor">#F2F2F2</color>
+    <color name="bg_Color">#F1F3F7</color>
+
+    <color name="black_HW">#191919</color>
+    <color name="white_HW">#FCFCFC</color>
+    <color name="grey_HW">#646464</color>
+
+</resources>

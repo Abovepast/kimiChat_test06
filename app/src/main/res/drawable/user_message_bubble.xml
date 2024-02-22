@@ -1,0 +1,10 @@
+<!-- res/drawable/user_message_bubble.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:topLeftRadius="15dp"
+        android:topRightRadius="0dp"
+        android:bottomLeftRadius="15dp"
+        android:bottomRightRadius="15dp"
+        />
+    <solid android:color="@color/sendMsg" /> <!-- 设置为你想要的颜色 -->
+</shape>
