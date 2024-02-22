@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.noties.markwon.Markwon;
+import io.noties.markwon.image.glide.GlideImagesPlugin;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView chatRecyclerView;
@@ -24,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 //    private Button botSend;
     private ChatAdapter chatAdapter;
     private List<ChatMessage> chatMessages;
+    private ImageView otherClear;
+    private ImageView brainClear;
+    private KimiChatService kimi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +39,21 @@ public class MainActivity extends AppCompatActivity {
         chatRecyclerView = findViewById(R.id.chatRecyclerView);
         messageEditText = findViewById(R.id.messageEditText);
         userSend = findViewById(R.id.userSend);
-//        botSend = findViewById(R.id.botSend);
-        ImageView otherClear = findViewById(R.id.other_clear);
+        otherClear = findViewById(R.id.other_clear);
+        brainClear = findViewById(R.id.brain_clear);
 
         chatMessages = new ArrayList<>();
-        chatAdapter = new ChatAdapter(chatMessages);
+        Markwon markwon = Markwon.builder(this)
+                .usePlugin(GlideImagesPlugin.create(this))
+                .build();
+        chatAdapter = new ChatAdapter(chatMessages, markwon);
 
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
 
-        KimiChatService kimi = new KimiChatService();
+        kimi = new KimiChatService();
+
+        // Markdown解析器
 
         // 当用户点击发送按钮时，创建消息并更新 UI
         userSend.setOnClickListener(new View.OnClickListener() {
@@ -95,23 +106,33 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         // 设置页面
         otherClear.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SettingAndAbout.class);
             startActivity(intent);
         });
-
         //清除页面
         otherClear.setOnLongClickListener(v -> {
-            chatMessages.clear(); // 清除所有消息
-            chatAdapter.notifyDataSetChanged();
-            chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount());
+            dialogClear();
             Toast.makeText(MainActivity.this, "对话内容清除成功", Toast.LENGTH_SHORT).show();
             return true;
         });
+        // 清空对话
+        brainClear.setOnClickListener(v -> {
+            kimi = new KimiChatService();
+            dialogClear();
+            Toast.makeText(MainActivity.this, "kunkun大脑已清空！", Toast.LENGTH_SHORT).show();
+            String tipStr = "哎哟，你干嘛~~~，KunKun已重新启动！让我们来开始新的对话吧！";
+            ChatMessage tipInfo = new ChatMessage(tipStr, false);
+            chatMessages.add(tipInfo);
+            chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
+            chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+        });
+    }
 
-
-
+    private void dialogClear() {
+        chatMessages.clear(); // 清除所有消息
+        chatAdapter.notifyDataSetChanged();
+        chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount());
     }
 }

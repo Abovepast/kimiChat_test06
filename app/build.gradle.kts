@@ -11,7 +11,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -31,6 +31,9 @@ android {
 dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.9.1")
     implementation("com.alibaba:fastjson:1.2.76")
+    implementation("io.noties.markwon:core:4.6.2")
+    implementation ("io.noties.markwon:image:4.6.2") // 如果你需要图片支持
+    implementation ("io.noties.markwon:image-glide:4.6.2") // 使用Glide加载图片
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

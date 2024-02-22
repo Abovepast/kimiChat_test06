@@ -1,5 +1,7 @@
 package com.example.kimichat_test06;
 
+import android.content.Context;
+import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import io.noties.markwon.Markwon;
+
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private final List<ChatMessage> chatMessages;
+    private final Markwon markwon;
 
-    public ChatAdapter(List<ChatMessage> chatMessages) {
+    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon) {
         this.chatMessages = chatMessages;
+        this.markwon = markwon;
     }
 
     @NonNull
@@ -33,6 +39,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatMessage message = chatMessages.get(position);
+        String markdownText = message.getMessage(); // 假设getMessage()返回Markdown文本
+
+        // 使用Markwon渲染Markdown
+        Spannable spannable = (Spannable) markwon.toMarkdown(markdownText);
         if (message.isUser()) {
             holder.userIcon.setVisibility(View.VISIBLE);
             holder.userName.setVisibility(View.VISIBLE);
@@ -40,7 +50,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             holder.receiverIcon.setVisibility(View.GONE);
             holder.receiverName.setVisibility(View.GONE);
             holder.receiverMessageTextView.setVisibility(View.GONE);
-            holder.userMessageTextView.setText(message.getMessage());
+//            holder.userMessageTextView.setText(message.getMessage());
+            holder.userMessageTextView.setText(spannable);
         } else {
             holder.userIcon.setVisibility(View.GONE);
             holder.userName.setVisibility(View.GONE);
@@ -48,7 +59,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             holder.receiverName.setVisibility(View.VISIBLE);
             holder.receiverIcon.setVisibility(View.VISIBLE);
             holder.receiverMessageTextView.setVisibility(View.VISIBLE);
-            holder.receiverMessageTextView.setText(message.getMessage());
+//            holder.receiverMessageTextView.setText(message.getMessage());
+            holder.receiverMessageTextView.setText(spannable);
         }
     }
 
