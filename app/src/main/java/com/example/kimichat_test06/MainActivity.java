@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     ChatMessage message = new ChatMessage(messageText, true);
                     chatMessages.add(message);
 
-                    messageBot = new ChatMessage("AI思考中...", false);
+                    messageBot = new ChatMessage("KunKun思考中...", false);
                     chatMessages.add(messageBot);
 
                     messageEditText.setText("");

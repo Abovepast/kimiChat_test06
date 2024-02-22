@@ -45,7 +45,6 @@ public class KimiChatService {
         try (Response response = client.newCall(request).execute()) {
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
-                Log.d("AAAA:response", responseString);
                 JSONObject responseJSON = JSON.parseObject(responseString);
                 JSONArray choicesArray = responseJSON.getJSONArray("choices");
                 JSONObject choice = choicesArray.getJSONObject(0);
@@ -69,7 +68,6 @@ public class KimiChatService {
         parsedMessages.remove(1);
         jsonRequest.remove("messages");
         jsonRequest.put("messages", parsedMessages);
-        Log.d("AAAA:saveBotSend", jsonRequest.toString());
     }
 
     private void saveUserSend(String userSend) {
@@ -78,7 +76,6 @@ public class KimiChatService {
         newMessage.put("content", userSend);
         parsedMessages.add(newMessage);
         jsonRequest.put("messages", parsedMessages);
-        Log.d("AAAA:saveUserSend", jsonRequest.toString());
     }
 
     @NonNull
