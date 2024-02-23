@@ -1,6 +1,6 @@
 package com.example.kimichat_test06;
 
-import android.util.Log;
+//import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -46,7 +46,7 @@ public class KimiChatService {
 //            Log.d("AAAA:请求接收成功！", response.toString());
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
-                Log.d("AAAA:responseString", responseString);
+//                Log.d("AAAA:responseString", responseString);
                 JSONObject responseJSON = JSON.parseObject(responseString);
                 JSONArray choicesArray = responseJSON.getJSONArray("choices");
                 JSONObject choice = choicesArray.getJSONObject(0);
