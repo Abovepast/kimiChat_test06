@@ -1,11 +1,11 @@
 ### KunKunChat
 ### ——一款基于`Moonshot AI`的安卓智能聊天机器人APP
 #### 使用说明
-**操作**
+**操作**\
 输入框输入聊天内容，点击发送按钮等待AI回复即可，
-<img src="/Markdown\picture\reset.png" width="24px"> 点击可重置对话；
-<img src="/Markdown\picture\other.png" width="24px"> 点击可进入应用介绍页面，长按可清理当前聊天记录。
-**注意事项**
+<img src="https://github.com/Abovepast/kunkunChat/blob/f8813c0b4f92b824531865eb2c9eacfeb4c50535/app/src/main/res/drawable/reset.png" width="24px"> 点击可重置对话；
+<img src="/app/src/main/res/drawable/other.png" width="24px"> 点击可进入应用介绍页面，长按可清理当前聊天记录。\
+**注意事项**\
 由于接口问题，问题复杂时响应可能会较慢，请耐心等待，超时将有提示信息
 
 #### 技术原理
