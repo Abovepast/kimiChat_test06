@@ -13,38 +13,40 @@ import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.ConnectionPool;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
 public class KimiChatService {
 
     private final JSONObject jsonRequest;
     private final JSONArray parsedMessages;
+    private final OkHttpClient client;
     private static final String API_KEY = "sk-sUSOaFGYu65PGuvQESpShXvXi1k73ZMrpAvCjnrxEDj5wQu3";
 
     public KimiChatService() {
         jsonRequest = initModelJSON();
         parsedMessages = jsonRequest.getJSONArray("messages");
+        client = getOkHttpClient();
     }
 
     public String sendRequestWithOkHttp(String userSend) throws JSONException, IOException {
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS) // 设置连接超时时间
-                .readTimeout(20, TimeUnit.SECONDS) // 设置读取超时时间
-                .build();
+
         saveUserSend(userSend);
         Request request = new Request.Builder()
                 .url("https://api.moonshot.cn/v1/chat/completions")//需要请求的网址
                 .post(RequestBody.Companion.create(jsonRequest.toString(), MediaType.parse("application/json; charset=utf-8")))
                 .addHeader("Authorization", "Bearer " + API_KEY)
                 .build();
+//        Log.d("AAAA:请求发送成功！", request.toString());
         try (Response response = client.newCall(request).execute()) {
+//            Log.d("AAAA:请求接收成功！", response.toString());
             if (response.isSuccessful() && response.body() != null) {
                 String responseString = response.body().string();
+                Log.d("AAAA:responseString", responseString);
                 JSONObject responseJSON = JSON.parseObject(responseString);
                 JSONArray choicesArray = responseJSON.getJSONArray("choices");
                 JSONObject choice = choicesArray.getJSONObject(0);
@@ -57,12 +59,22 @@ public class KimiChatService {
             }
         } catch (SocketTimeoutException e) {
             e.printStackTrace();
-            return "Error! 请求超时!";
+            return "Error! 请求超时!\n" + e;
         } catch (IOException e) {
             e.printStackTrace();
             return "Error! 请求失败!\n错误信息:" + e;
         }
     }
+
+    @NonNull
+    private static OkHttpClient getOkHttpClient() {
+        return new OkHttpClient.Builder()
+                .connectionPool(new ConnectionPool(5, 5, TimeUnit.MINUTES))
+                .connectTimeout(40, TimeUnit.SECONDS) // 设置连接超时时间
+                .readTimeout(40, TimeUnit.SECONDS) // 设置读取超时时间
+                .build();
+    }
+
 
     private void minusSend() {
         parsedMessages.remove(1);
@@ -94,7 +106,7 @@ public class KimiChatService {
         messages.add(system);
         jsonRequest.put("messages", messages);
         jsonRequest.put("temperature", 0.3);
-
+//        jsonRequest.put("stream", true);
         return jsonRequest;
     }
 }

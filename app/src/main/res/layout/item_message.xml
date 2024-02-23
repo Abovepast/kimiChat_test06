@@ -42,7 +42,8 @@
             android:text="Bot Message"
             android:textColor="@color/textColor"
             android:textSize="16sp"
-            android:layout_toRightOf="@+id/bot_icon"/>
+            android:layout_toRightOf="@+id/bot_icon"
+            android:textIsSelectable="true"/>
 
 
 
@@ -73,7 +74,8 @@
         android:padding="6dp"
         android:text="User Message"
         android:textColor="@color/textColor"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textIsSelectable="true"/>
 
     <ImageView
         android:id="@+id/user_icon"
