@@ -55,9 +55,8 @@ public class MainActivity extends AppCompatActivity{
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
 
+        // 初始化AI
         kimi = new KimiChatService();
-
-        // Markdown解析器
 
         // 当用户点击发送按钮时，创建消息并更新 UI
         userSend.setOnClickListener(new View.OnClickListener() {
@@ -122,6 +121,7 @@ public class MainActivity extends AppCompatActivity{
             }
             private void startCountdownTimer() {
 
+                // 如果上一个计时器在活动，取消计时器
                 if (countDownTimer != null) {
                     countDownTimer.cancel();
                 }

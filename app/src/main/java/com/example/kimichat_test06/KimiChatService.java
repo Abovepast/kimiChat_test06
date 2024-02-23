@@ -76,12 +76,17 @@ public class KimiChatService {
     }
 
 
+    //
     private void minusSend() {
-        parsedMessages.remove(1);
-        jsonRequest.remove("messages");
-        jsonRequest.put("messages", parsedMessages);
+        // 当列表中消息数大于5，删除消息数组中的第2条
+        if (parsedMessages.size() >5 ) {
+            parsedMessages.remove(1);
+            jsonRequest.remove("messages");
+            jsonRequest.put("messages", parsedMessages);
+        }
     }
 
+    // 保存用户对话内容，用于连续对话
     private void saveUserSend(String userSend) {
         JSONObject newMessage = new JSONObject();
         newMessage.put("role", "user");
