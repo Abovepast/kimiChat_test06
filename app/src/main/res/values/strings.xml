@@ -7,4 +7,6 @@
         用户输入内容后，点击发送按钮，会将内容发送给KunKunChat，KunKunChat会返回一个回复内容。\n
         长按右上角可以清除当前聊天记录。</string>
     <string name="github_site"><a href="https://github.com/Abovepast/kunkunChat">https://github.com/Abovepast/kunkunChat</a></string>
+    <string name="ImgDescription">KunKunChat</string>
+    <string name="AuthorEmail">shijin9000@163.com</string>
 </resources>

@@ -12,7 +12,8 @@
         android:id="@+id/back_to_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/back_to" />
+        android:src="@drawable/back_to"
+        android:contentDescription="@string/ImgDescription" />
 
     <LinearLayout
         android:id="@+id/LLayout"
@@ -25,7 +26,8 @@
             android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            app:srcCompat="@drawable/chatppt" />
+            app:srcCompat="@drawable/chatppt"
+            android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/textView"
@@ -72,7 +74,8 @@
                 android:layout_gravity="left|top"
                 android:text="使用说明"
                 android:textColor="@color/textColor"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -97,26 +100,28 @@
                 android:layout_gravity="left|top"
                 android:text="项目开源地址"
                 android:textColor="@color/textColor"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_gravity="center|top"
                 android:gravity="center"
-                >
+                tools:ignore="UseCompoundDrawables">
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/github"
-                    android:layout_marginTop="14dp"/>
+                    android:layout_marginTop="14dp"
+                    android:importantForAccessibility="no" />
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:layout_marginStart="5dp"
-                    android:text="@string/github_site" />
+                    android:text="@string/github_site"/>
             </LinearLayout>
 
         </FrameLayout>
@@ -133,14 +138,15 @@
                 android:layout_gravity="left|top"
                 android:text="联系作者"
                 android:textColor="@color/textColor"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
             <TextView
                 android:id="@+id/textViewA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="shijin9000@163.com" />
+                android:text="@string/AuthorEmail" />
         </FrameLayout>
     </LinearLayout>
 

@@ -96,7 +96,7 @@
             android:textSize="18sp"
             android:textAlignment="center"
             android:background="@drawable/msg_shape"
-            tools:ignore="RtlCompat" />
+            tools:ignore="HardcodedText,RtlCompat,RtlSymmetry" />
 
         <Button
             android:id="@+id/userSend"
@@ -104,10 +104,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="6dp"
-            android:background="@drawable/button_send_shape"
+            android:background="@drawable/send_button_select"
             android:text="发送"
             android:textSize="18sp"
-            android:textColor="@color/textColor"/>
+            android:textColor="@color/textColor"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -14,7 +15,8 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="2dp"
-        android:src="@drawable/kunkun" />
+        android:src="@drawable/kunkun"
+        android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/bot_name"
@@ -24,9 +26,9 @@
             android:textSize="12sp"
             android:textColor="@color/black_HW"
             android:textStyle="bold"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/bot_icon"
-            />
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/bot_icon"
+            tools:ignore="HardcodedText" />
         <TextView
             android:id="@+id/messageReceive"
             android:layout_width="wrap_content"
@@ -42,8 +44,9 @@
             android:text="Bot Message"
             android:textColor="@color/textColor"
             android:textSize="16sp"
-            android:layout_toRightOf="@+id/bot_icon"
-            android:textIsSelectable="true"/>
+            android:layout_toEndOf="@+id/bot_icon"
+            android:textIsSelectable="true"
+            tools:ignore="HardcodedText" />
 
 
 
@@ -51,13 +54,13 @@
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:text="User"
         android:textSize="12sp"
         android:textColor="@color/black_HW"
         android:textStyle="bold"
-        android:layout_toLeftOf="@+id/user_icon"
-        />
+        android:layout_toStartOf="@+id/user_icon"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/messageSend"
@@ -68,14 +71,15 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="2dp"
-        android:layout_toLeftOf="@+id/user_icon"
+        android:layout_toStartOf="@+id/user_icon"
         android:maxWidth="300dp"
         android:background="@drawable/user_message_bubble"
         android:padding="6dp"
         android:text="User Message"
         android:textColor="@color/textColor"
         android:textSize="16sp"
-        android:textIsSelectable="true"/>
+        android:textIsSelectable="true"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/user_icon"
@@ -87,6 +91,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="2dp"
-        android:src="@drawable/user" />
+        android:src="@drawable/user"
+        android:importantForAccessibility="no" />
 
 </RelativeLayout>
