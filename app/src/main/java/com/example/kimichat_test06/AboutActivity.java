@@ -3,7 +3,9 @@ package com.example.kimichat_test06;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -15,5 +17,8 @@ public class AboutActivity extends AppCompatActivity {
         ImageView back = findViewById(R.id.back_to_main);
 
         back.setOnClickListener(v -> finish());
+
+        TextView textView8 = findViewById(R.id.textView8);
+        textView8.setMovementMethod(LinkMovementMethod.getInstance());
     }
 }
