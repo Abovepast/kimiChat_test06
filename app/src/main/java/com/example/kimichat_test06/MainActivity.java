@@ -2,6 +2,7 @@ package com.example.kimichat_test06;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity{
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("kimiChat", MODE_PRIVATE);
+        String API_KEY = sharedPreferences.getString("API_KEY", "");
+
         // 初始化AI
         kimi = new KimiChatService();
 
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity{
                 // 在新线程中
                 new Thread(() -> {
                     try {
-                        kimiResponse = kimi.sendRequestWithOkHttp(messageText);
+                        kimiResponse = kimi.sendRequestWithOkHttp(messageText, API_KEY);
                         isFinsh = true;
                         // 在这里，你可以将kimiResponse保存在一个全局变量或者通过其他方式传递回主线程
                     } catch (IOException e) {

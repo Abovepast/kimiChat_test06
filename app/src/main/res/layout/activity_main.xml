@@ -25,9 +25,8 @@
             android:layout_height="match_parent"
             android:tint="@color/black_HW"
             android:src="@drawable/reset"
-
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="6dp"
             />
 
         <TextView
@@ -37,7 +36,7 @@
 
             android:gravity="center_vertical|center"
             android:text="@string/jinjincainiao_ai"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textColor="@color/textColor"
             tools:ignore="MissingConstraints,Suspicious0dp" />
 
@@ -46,11 +45,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@drawable/other_settings"
             android:tint="@color/black_HW"
-
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:padding="3dp"
             />
 
     </LinearLayout>

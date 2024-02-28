@@ -57,7 +57,88 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        android:background="@drawable/about"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/api_key"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:text="API_KEY"
+                android:textColor="@color/textColor"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+            <EditText
+                android:id="@+id/edit_apikey"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_gravity="top|end"
+                android:layout_marginStart="6dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/akey_shape"
+                android:hint="Type your API_KEY here"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/black_HW"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,RtlCompat,RtlSymmetry" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/sendApiKey"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="6dp"
+                android:background="@drawable/send_button_select"
+                android:text="修改"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/getAKey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/getCurentKEY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="bt2" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
         android:orientation="vertical"
         android:background="@drawable/about"
         android:layout_margin="20dp"

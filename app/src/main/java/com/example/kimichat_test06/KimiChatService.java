@@ -2,6 +2,8 @@ package com.example.kimichat_test06;
 
 //import android.util.Log;
 
+import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
@@ -25,7 +27,7 @@ public class KimiChatService {
     private final JSONObject jsonRequest;
     private final JSONArray parsedMessages;
     private final OkHttpClient client;
-    private static final String API_KEY = "sk-sUSOaFGYu65PGuvQESpShXvXi1k73ZMrpAvCjnrxEDj5wQu3";
+//    private static final String API_KEY = "";
 
     public KimiChatService() {
         jsonRequest = initModelJSON();
@@ -33,7 +35,7 @@ public class KimiChatService {
         client = getOkHttpClient();
     }
 
-    public String sendRequestWithOkHttp(String userSend) throws JSONException, IOException {
+    public String sendRequestWithOkHttp(String userSend, String API_KEY) throws JSONException, IOException {
 
         saveUserSend(userSend);
         Request request = new Request.Builder()
