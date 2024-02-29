@@ -52,8 +52,10 @@ public class KimiChatService {
                 String content = message.getString("content");
                 minusSend();
                 return content;
+            } if (API_KEY.equals("")) {
+                return "请先设置API_KEY!";
             } else {
-                return "Error! 回应解析失败!\n请在设置页面填入正确的API_KEY!";
+                return "Error! 回应解析失败或API_KEY错误!";
             }
         } catch (SocketTimeoutException e) {
             e.printStackTrace();

@@ -8,5 +8,5 @@
     <string name="github_site"><a href="https://github.com/Abovepast/kimiChat_test06">https://github.com/Abovepast/kimiChat_test06</a></string>
     <string name="ImgDescription">KunKunChat</string>
     <string name="AuthorEmail">shijin9000@163.com</string>
-    <string name="api_key_link"><a href="https://login.moonshot.cn/?source=https%3A%2F%2Fplatform.moonshot.cn%2Fredirect">去获得自己的API_KEY</a></string>
+    <string name="api_key_link"><a href="https://login.moonshot.cn/?source=https%3A%2F%2Fplatform.moonshot.cn%2Fredirect">去注册获得自己的API_KEY</a></string>
 </resources>

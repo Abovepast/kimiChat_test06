@@ -37,23 +37,19 @@ public class AboutActivity extends AppCompatActivity {
             // 创建AlertDialog
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("确认操作")
-                    .setMessage("您确定要执行此操作吗？")
+                    .setMessage("此操作不可逆,您确定要执行此操作吗？")
                     .setPositiveButton("确认", (dialog, which) -> {
                         // 用户点击了确认按钮
                         // 使用SharedPreferences将API_KEY保存起来
                         SharedPreferences sharedPreferences = getSharedPreferences("kimiChat", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("API_KEY", edit_apikey.getText().toString()).apply();
-                        Toast.makeText(AboutActivity.this, "API_KEY设置成功！现在你可以和kunkun对话啦！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AboutActivity.this, "API_KEY设置成功！\n回到主页点击'重置对话'就可以和kunkun对话啦！", Toast.LENGTH_SHORT).show();
                     })
                     .setNegativeButton("取消", (dialog, which) -> {
                         // 用户点击了取消按钮
                         Toast.makeText(AboutActivity.this, "取消操作！", Toast.LENGTH_SHORT).show();
                     }).create().show();
-
-//            // 创建并显示对话框
-//            AlertDialog dialog = builder.create();
-//            dialog.show();
 
         });
 
@@ -65,9 +61,5 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-//        getCurentKEY.setOnClickListener(v -> {
-//            Toast.makeText(this, "当前API_KEY为：" + KimiChatService.API_KEY, Toast.LENGTH_SHORT).show();
-//            edit_apikey.setText(KimiChatService.API_KEY);
-//        });
     }
 }
