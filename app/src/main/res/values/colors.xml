@@ -18,4 +18,6 @@
     <color name="grey_HW">#646464</color>
     <color name="blue_HW">#0a58f6</color>
 
+    <color name="linkColor">#008577</color>
+
 </resources>

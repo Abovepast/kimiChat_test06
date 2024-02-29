@@ -1,9 +1,5 @@
 package com.example.kimichat_test06;
 
-//import android.util.Log;
-
-import android.content.SharedPreferences;
-
 import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
@@ -57,7 +53,7 @@ public class KimiChatService {
                 minusSend();
                 return content;
             } else {
-                return "Error! 回应解析失败!";
+                return "Error! 回应解析失败!\n请在设置页面填入正确的API_KEY!";
             }
         } catch (SocketTimeoutException e) {
             e.printStackTrace();

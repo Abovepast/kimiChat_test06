@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity{
     private KimiChatService kimi;
     private boolean isFinsh = false;
     private CountDownTimer countDownTimer;
+    private String apiKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity{
         chatRecyclerView.setAdapter(chatAdapter);
 
         SharedPreferences sharedPreferences = getSharedPreferences("kimiChat", MODE_PRIVATE);
-        String API_KEY = sharedPreferences.getString("API_KEY", "");
+        apiKey = sharedPreferences.getString("API_KEY", "");
 
         // 初始化AI
         kimi = new KimiChatService();
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity{
                 // 在新线程中
                 new Thread(() -> {
                     try {
-                        kimiResponse = kimi.sendRequestWithOkHttp(messageText, API_KEY);
+                        kimiResponse = kimi.sendRequestWithOkHttp(messageText, apiKey);
                         isFinsh = true;
                         // 在这里，你可以将kimiResponse保存在一个全局变量或者通过其他方式传递回主线程
                     } catch (IOException e) {
@@ -164,6 +165,7 @@ public class MainActivity extends AppCompatActivity{
         });
         // 清空对话
         brainClear.setOnClickListener(v -> {
+            apiKey = sharedPreferences.getString("API_KEY", "");
             kimi = new KimiChatService();
             dialogClear();
             Toast.makeText(MainActivity.this, "kunkun大脑已清空！", Toast.LENGTH_SHORT).show();

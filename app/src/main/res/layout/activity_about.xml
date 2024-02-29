@@ -113,7 +113,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="6dp"
                 android:background="@drawable/send_button_select"
-                android:text="修改"
+                android:text="确认"
                 android:textColor="@color/textColor"
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
@@ -121,16 +121,31 @@
             <Button
                 android:id="@+id/getAKey"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
+                android:layout_height="24dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="6dp"
+                android:background="@color/blue_HW"
+                android:text="获取"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
-            <Button
-                android:id="@+id/getCurentKEY"
+            <TextView
+                android:id="@+id/goToAKey"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="bt2" />
+                android:layout_height="24dp"
+                android:text="@string/api_key_link"
+                android:textSize="12sp"
+                android:layout_gravity="center_vertical"
+                android:padding="3dp"
+                />
+
+<!--            <Button-->
+<!--                android:id="@+id/getCurentKEY"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="bt2" />-->
         </LinearLayout>
 
 
