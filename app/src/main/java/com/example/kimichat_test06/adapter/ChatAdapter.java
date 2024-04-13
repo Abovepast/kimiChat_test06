@@ -1,6 +1,5 @@
-package com.example.kimichat_test06;
+package com.example.kimichat_test06.adapter;
 
-import android.content.Context;
 import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kimichat_test06.R;
+import com.example.kimichat_test06.bean.ChatMessage;
 
 import java.util.List;
 

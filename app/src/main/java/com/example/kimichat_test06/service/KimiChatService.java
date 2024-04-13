@@ -1,4 +1,6 @@
-package com.example.kimichat_test06;
+package com.example.kimichat_test06.service;
+
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -31,6 +33,17 @@ public class KimiChatService {
         client = getOkHttpClient();
     }
 
+    public KimiChatService(boolean isEnglish) {
+        if (isEnglish) {
+            Toast.makeText(null, "已切换到英文模式", Toast.LENGTH_SHORT).show();
+        }
+        jsonRequest = initModelJSON();
+        parsedMessages = jsonRequest.getJSONArray("messages");
+        client = getOkHttpClient();
+        String english_learn_model = "接下来我将会连续输入英文句子，你将分析句子成分，分析结果带中文翻译。";
+        saveUserSend(english_learn_model);
+    }
+
     public String sendRequestWithOkHttp(String userSend, String API_KEY) throws JSONException, IOException {
 
         saveUserSend(userSend);
@@ -52,16 +65,26 @@ public class KimiChatService {
                 String content = message.getString("content");
                 minusSend();
                 return content;
-            } if (API_KEY.equals("")) {
+            } else if (API_KEY.isEmpty()) {
                 return "请先设置API_KEY!";
+            } else if(response.code() == 401) {
+                return "Error! API_KEY错误!";
+            } else if(response.code() == 400) {
+                return "Error! 请求参数错误!";
+            } else if(response.code() == 429) {
+                return "Error! 请求频率过高!\n" +
+                        "建议降低temperature参数或等待1分钟再试。\n" +
+                        "如果持续出现此错误，请检查API_KEY是否正确。";
+            } else if(response.code() != 200) {
+                return "Error! 错误代码:" + response.code() + "\n" +
+                        "错误信息:" + response.message() + "\n" +
+                        "主体信息:" + response.body();
             } else {
-                return "Error! 回应解析失败或API_KEY错误!";
+                return "Error! 未知错误!";
             }
         } catch (SocketTimeoutException e) {
-            e.printStackTrace();
             return "Error! 请求超时!\n" + e;
         } catch (IOException e) {
-            e.printStackTrace();
             return "Error! 请求失败!\n错误信息:" + e;
         }
     }

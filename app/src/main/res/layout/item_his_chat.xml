@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/about"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/saveText"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="5dp"
+        android:text="保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本"
+        tools:ignore="HardcodedText"
+        android:textColor="@color/black_HW"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/saveTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="保存时间"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

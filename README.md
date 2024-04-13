@@ -2,7 +2,9 @@
 ### ——一款基于`Moonshot AI`的安卓智能聊天机器人APP
 #### 使用说明
 **操作**\
-输入框输入聊天内容，点击发送按钮等待AI回复即可，
+再使用软件之前请先配置API_KEY，配置方法如下：\
+登录`Moonshot AI`官网，注册账号，在用户中心创建自己的`API_KEY`，在软件中点击`设置`图标，将`API_KEY`粘贴到输入框中，点击`确认`即可。\
+https://platform.moonshot.cn/console
 <img src="app/src/main/res/drawable/reset.png" width="24px"> 点击可重置对话；
 <img src="app/src/main/res/drawable/other.png" width="24px"> 点击可进入应用介绍页面，长按可清理当前聊天记录。\
 **注意事项**\

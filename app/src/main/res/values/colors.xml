@@ -7,6 +7,7 @@
     <color name="sendMsg">#D5E6DF</color>
     <color name="textColor">#191919</color>
     <color name="sendBtnTrue">#14C254</color>
+    <color name="sendBtnTrue_eng">#f7abc9</color>
     <color name="sendBtnFalse">#A9A9A9</color>
     <color name="barColor">#FFFFFF</color>
 

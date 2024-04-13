@@ -1,7 +1,7 @@
-package com.example.kimichat_test06;
+package com.example.kimichat_test06.bean;
 
 
-class ChatMessage {
+public class ChatMessage {
     private final String message;
     private final boolean isUser;
 

@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:background="@color/bg_Color"
     android:animateLayoutChanges="true"
+    android:fitsSystemWindows="true"
     >
 
     <LinearLayout
@@ -28,10 +29,20 @@
             android:background="?android:attr/selectableItemBackground"
             android:padding="6dp"
             />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/eng_learn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:tint="@color/black_HW"
+            android:src="@drawable/english"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="6dp"
+            />
 
         <TextView
             android:id="@+id/TextBar"
-            android:layout_width="333dp"
+            android:layout_width="260dp"
             android:layout_height="54dp"
 
             android:gravity="center_vertical|center"
@@ -40,6 +51,16 @@
             android:textColor="@color/textColor"
             tools:ignore="MissingConstraints,Suspicious0dp" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/history_chat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:src="@drawable/history"
+            android:tint="@color/black_HW"
+            android:padding="6dp"
+            />
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/other_clear"
             android:layout_width="0dp"

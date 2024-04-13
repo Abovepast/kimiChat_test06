@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kimichat_test06.adapter.ChatAdapter;
+import com.example.kimichat_test06.bean.ChatMessage;
+import com.example.kimichat_test06.service.KimiChatService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -32,10 +37,11 @@ public class MainActivity extends AppCompatActivity{
     private ChatAdapter chatAdapter;
     private List<ChatMessage> chatMessages;
     private KimiChatService kimi;
-    private boolean isFinsh = false;
+    private boolean isFinish = false;
     private CountDownTimer countDownTimer;
     private String apiKey;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,8 @@ public class MainActivity extends AppCompatActivity{
         ImageView otherClear = findViewById(R.id.other_clear);
         ImageView brainClear = findViewById(R.id.brain_clear);
         TextView textBar = findViewById(R.id.TextBar);
+        ImageView history_chat = findViewById(R.id.history_chat);
+        ImageView eng_learn = findViewById(R.id.eng_learn);
 
         chatMessages = new ArrayList<>();
         Markwon markwon = Markwon.builder(this)
@@ -83,9 +91,9 @@ public class MainActivity extends AppCompatActivity{
                     chatMessages.add(messageBot);
 
                     textBar.setText("60 S");
-                    // 初始化isSkip为false,代表是否完成倒计时或kimiResonpse已经接收到了解析结果
-                    isFinsh = false;
-                    // 设置每1秒更新一次textBar的40秒倒计时，当isFinsh为true时，停止倒计时
+                    // 初始化isSkip为false,代表是否完成倒计时或kimiResponse已经接收到了解析结果
+                    isFinish = false;
+                    // 设置每1秒更新一次textBar的40秒倒计时，当isFinish为true时，停止倒计时
                     startCountdownTimer();
 
                     messageEditText.setText("");
@@ -95,14 +103,13 @@ public class MainActivity extends AppCompatActivity{
                     chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
 
                 // 开启异步线程，发送消息
-                // 在新线程中
                 new Thread(() -> {
                     try {
                         kimiResponse = kimi.sendRequestWithOkHttp(messageText, apiKey);
-                        isFinsh = true;
+                        isFinish = true;
                         // 在这里，你可以将kimiResponse保存在一个全局变量或者通过其他方式传递回主线程
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        Log.e("MainActivity", "Error: " + e.getMessage());
                         kimiResponse = "Error!\n错误信息:" + e;
                     }
 
@@ -120,6 +127,8 @@ public class MainActivity extends AppCompatActivity{
                         chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
                     });
                 }).start();
+
+                // 保存当前对话到历史记录
                 } else {
                     Toast.makeText(MainActivity.this, "请输入内容", Toast.LENGTH_SHORT).show();
                 }
@@ -133,15 +142,15 @@ public class MainActivity extends AppCompatActivity{
                 countDownTimer = new CountDownTimer(60000, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        if (!isFinsh) {
+                        if (!isFinish) {
                             // Update textBar every second
                             textBar.setText(String.format(Locale.getDefault(), "%d S", millisUntilFinished / 1000));
                         }
                     }
                     @Override
                     public void onFinish() {
-                        if (!isFinsh) {
-                            // Handle timeout when no response is received
+                        if (!isFinish) {
+                            // 未收到响应时处理超时
                             messageBot = new ChatMessage("KunKun的CPU被干烧了，请重新提问吧", false);
                             chatMessages.add(messageBot);
                             userSend.setEnabled(true);
@@ -168,12 +177,32 @@ public class MainActivity extends AppCompatActivity{
             apiKey = sharedPreferences.getString("API_KEY", "");
             kimi = new KimiChatService();
             dialogClear();
-            Toast.makeText(MainActivity.this, "kunkun大脑已清空！", Toast.LENGTH_SHORT).show();
             String tipStr = "哎哟，你干嘛~~~，KunKun已重新启动！让我们来开始新的对话吧！";
             ChatMessage tipInfo = new ChatMessage(tipStr, false);
             chatMessages.add(tipInfo);
             chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
             chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+
+            //改变UI
+            userSend.setBackground(getDrawable(R.drawable.send_button_select));
+        });
+        // 历史对话
+        history_chat.setOnClickListener(v->{
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
+        });
+        // 英语学习模式
+        eng_learn.setOnClickListener(v->{
+            kimi = new KimiChatService(true);
+            dialogClear();
+            String tipStr = "KunKun已进入英文句子分析模式!";
+            ChatMessage tipInfo = new ChatMessage(tipStr, false);
+            chatMessages.add(tipInfo);
+            chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
+            chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+
+            //改变UI
+            userSend.setBackground(getDrawable(R.drawable.user_send_english));
         });
     }
 
