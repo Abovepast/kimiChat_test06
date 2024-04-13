@@ -30,7 +30,7 @@ public class HistoryActivity extends AppCompatActivity {
         Markwon markwon = Markwon.builder(this)
                 .usePlugin(GlideImagesPlugin.create(this))
                 .build();
-        chatAdapter = new ChatAdapter(chatMessages, markwon);
+        chatAdapter = new ChatAdapter(chatMessages, markwon, false);
 
         ImageView back_to_main = findViewById(R.id.back_to_main);
 

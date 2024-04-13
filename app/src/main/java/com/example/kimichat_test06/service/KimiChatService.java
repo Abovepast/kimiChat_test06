@@ -1,6 +1,6 @@
 package com.example.kimichat_test06.service;
 
-import android.widget.Toast;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -35,7 +35,7 @@ public class KimiChatService {
 
     public KimiChatService(boolean isEnglish) {
         if (isEnglish) {
-            Toast.makeText(null, "已切换到英文模式", Toast.LENGTH_SHORT).show();
+            Log.d("AAAA:初始化英文模型", "初始化英文模型");
         }
         jsonRequest = initModelJSON();
         parsedMessages = jsonRequest.getJSONArray("messages");

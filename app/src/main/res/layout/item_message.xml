@@ -22,7 +22,7 @@
             android:id="@+id/bot_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KunKun"
+            android:text="@string/bot_name"
             android:textSize="12sp"
             android:textColor="@color/black_HW"
             android:textStyle="bold"

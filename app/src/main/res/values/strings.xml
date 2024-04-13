@@ -2,11 +2,13 @@
     <string name="app_name">kunKunChat</string>
     <string name="jinjincainiao_ai">KunKunChat</string>
     <string name="author">Author: ShiJin Wang</string>
-    <string name="version">Version: V1.4</string>
+    <string name="version">Version: V1.5_alpha</string>
     <string name="content">\u3000该项目基于Moonshot AI的API，使用Okhttp向Moonshot AI发送API请求,收到响应后，使用FastJSON解析出有效信息，将信息装载至消息列表中，并使用适配器的方式使用Markwon进行渲染，最后显示在Activity。\n
         \u3000点击左上角可以重置对话，长按右上角可以清除当前聊天记录。</string>
     <string name="github_site"><a href="https://github.com/Abovepast/kimiChat_test06">https://github.com/Abovepast/kimiChat_test06</a></string>
     <string name="ImgDescription">KunKunChat</string>
     <string name="AuthorEmail">shijin9000@163.com</string>
     <string name="api_key_link"><a href="https://login.moonshot.cn/?source=https%3A%2F%2Fplatform.moonshot.cn%2Fredirect">去注册获得自己的API_KEY</a></string>
+    <string name="kunkun_english">KunKun-English</string>
+    <string name="bot_name">KunKun</string>
 </resources>

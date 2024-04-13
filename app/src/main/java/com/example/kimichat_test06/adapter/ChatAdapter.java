@@ -20,10 +20,12 @@ import io.noties.markwon.Markwon;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private final List<ChatMessage> chatMessages;
     private final Markwon markwon;
+    public boolean isEnglishMode;
 
-    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon) {
+    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon, boolean isEnglishMode) {
         this.chatMessages = chatMessages;
         this.markwon = markwon;
+        this.isEnglishMode = isEnglishMode;
     }
 
     @NonNull
@@ -45,6 +47,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         // 使用Markwon渲染Markdown
         Spannable spannable = (Spannable) markwon.toMarkdown(markdownText);
+        if (isEnglishMode) {
+            holder.receiverIcon.setImageResource(R.drawable.teacher);
+            holder.receiverName.setText(R.string.kunkun_english);
+        } else {
+            holder.receiverIcon.setImageResource(R.drawable.kunkun);
+            holder.receiverName.setText(R.string.bot_name);
+        }
         if (message.isUser()) {
             holder.userIcon.setVisibility(View.VISIBLE);
             holder.userName.setVisibility(View.VISIBLE);
@@ -72,7 +81,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
 
         public ImageView userIcon;
         public ImageView receiverIcon;

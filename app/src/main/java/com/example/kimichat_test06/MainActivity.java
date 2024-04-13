@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kimichat_test06.adapter.ChatAdapter;
 import com.example.kimichat_test06.bean.ChatMessage;
+import com.example.kimichat_test06.bean.Conversation;
+import com.example.kimichat_test06.dao.ChatDatabaseHelper;
 import com.example.kimichat_test06.service.KimiChatService;
 
 import java.io.IOException;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
     private boolean isFinish = false;
     private CountDownTimer countDownTimer;
     private String apiKey;
+    private long conversationId;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -60,7 +63,8 @@ public class MainActivity extends AppCompatActivity{
         Markwon markwon = Markwon.builder(this)
                 .usePlugin(GlideImagesPlugin.create(this))
                 .build();
-        chatAdapter = new ChatAdapter(chatMessages, markwon);
+
+        chatAdapter = new ChatAdapter(chatMessages, markwon, false);
 
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
@@ -68,8 +72,10 @@ public class MainActivity extends AppCompatActivity{
         SharedPreferences sharedPreferences = getSharedPreferences("kimiChat", MODE_PRIVATE);
         apiKey = sharedPreferences.getString("API_KEY", "");
 
+        ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this);
         // 初始化AI
         kimi = new KimiChatService();
+        conversationId = new Conversation().getConversationId();
 
         // 当用户点击发送按钮时，创建消息并更新 UI
         userSend.setOnClickListener(new View.OnClickListener() {
@@ -84,10 +90,10 @@ public class MainActivity extends AppCompatActivity{
                 // 获取文本并创建消息
                 String messageText = messageEditText.getText().toString().trim();
                 if (!messageText.isEmpty()) {
-                    ChatMessage message = new ChatMessage(messageText, true);
+                    ChatMessage message = new ChatMessage(messageText, true, conversationId);
                     chatMessages.add(message);
 
-                    messageBot = new ChatMessage("KunKun思考中...", false);
+                    messageBot = new ChatMessage("KunKun思考中...", false, conversationId);
                     chatMessages.add(messageBot);
 
                     textBar.setText("60 S");
@@ -117,7 +123,7 @@ public class MainActivity extends AppCompatActivity{
                     runOnUiThread(() -> {
 
                         chatMessages.remove(messageBot);
-                        messageBot = new ChatMessage(kimiResponse, false);
+                        messageBot = new ChatMessage(kimiResponse, false, conversationId);
                         chatMessages.add(messageBot);
 
                         textBar.setText(R.string.jinjincainiao_ai);
@@ -151,7 +157,7 @@ public class MainActivity extends AppCompatActivity{
                     public void onFinish() {
                         if (!isFinish) {
                             // 未收到响应时处理超时
-                            messageBot = new ChatMessage("KunKun的CPU被干烧了，请重新提问吧", false);
+                            messageBot = new ChatMessage("KunKun的CPU被干烧了，请重新提问吧", false, conversationId);
                             chatMessages.add(messageBot);
                             userSend.setEnabled(true);
                         }
@@ -175,10 +181,12 @@ public class MainActivity extends AppCompatActivity{
         // 清空对话
         brainClear.setOnClickListener(v -> {
             apiKey = sharedPreferences.getString("API_KEY", "");
+            chatAdapter.isEnglishMode = false;
+            conversationId = new Conversation().getConversationId();
             kimi = new KimiChatService();
             dialogClear();
             String tipStr = "哎哟，你干嘛~~~，KunKun已重新启动！让我们来开始新的对话吧！";
-            ChatMessage tipInfo = new ChatMessage(tipStr, false);
+            ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
             chatMessages.add(tipInfo);
             chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
             chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
@@ -193,10 +201,13 @@ public class MainActivity extends AppCompatActivity{
         });
         // 英语学习模式
         eng_learn.setOnClickListener(v->{
+            chatAdapter.isEnglishMode = true;
+            conversationId = new Conversation().getConversationId();
             kimi = new KimiChatService(true);
             dialogClear();
-            String tipStr = "KunKun已进入英文句子分析模式!";
-            ChatMessage tipInfo = new ChatMessage(tipStr, false);
+            String tipStr = "KunKun已进入英文句子分析模式!\n" +
+                    "直接输入英文句子,我将会分析句子成分。";
+            ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
             chatMessages.add(tipInfo);
             chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
             chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
