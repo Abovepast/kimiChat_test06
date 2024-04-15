@@ -23,11 +23,13 @@ public class KimiChatService {
     private final JSONObject jsonRequest;
     private final JSONArray parsedMessages;
     private final OkHttpClient client;
+    private final String ChatMode;
 
     public KimiChatService(String ChatMode) {
         jsonRequest = initModelJSON();
         parsedMessages = jsonRequest.getJSONArray("messages");
         client = getOkHttpClient();
+        this.ChatMode = ChatMode;
         if (ChatMode.equals("english")) {
             String english_learn_model = "接下来我将会连续输入英文句子，你将分析句子成分，分析结果带中文翻译。";
             saveUserSend(english_learn_model);
@@ -60,11 +62,15 @@ public class KimiChatService {
             } else if(response.code() == 401) {
                 return "Error! API_KEY错误!";
             } else if(response.code() == 400) {
-                return "Error! 请求参数错误!";
+                return "Error! 请求参数错误!\n" +
+                        "您输入格式有误，包括使用了预期外的参数，" +
+                        "比如过大的 temperature，或者 messages 的大小超过了限制。" +
+                        "\n" + response.message();
             } else if(response.code() == 429) {
                 return "Error! 请求频率过高!\n" +
-                        "建议降低temperature参数或等待1分钟再试。\n" +
-                        "如果持续出现此错误，请检查API_KEY是否正确。";
+                        "engine_overloaded_error\n" +
+                        "接口引擎目前过载，请稍后再试...\n"+
+                        response.message();
             } else if(response.code() != 200) {
                 return "Error! 错误代码:" + response.code() + "\n" +
                         "错误信息:" + response.message() + "\n" +
@@ -88,15 +94,25 @@ public class KimiChatService {
                 .build();
     }
 
-
     //
     private void minusSend() {
-        // 当列表中消息数大于5，删除消息数组中的第2条
-        if (parsedMessages.size() >5 ) {
-            parsedMessages.remove(1);
-            jsonRequest.remove("messages");
-            jsonRequest.put("messages", parsedMessages);
+        // 英文解析模式
+        if(this.ChatMode.equals("english")) {
+            if(parsedMessages.size()>3) {
+                parsedMessages.remove(2);
+                jsonRequest.remove("messages");
+                jsonRequest.put("messages", parsedMessages);
+            }
+        } else {
+            //常规模式
+            // 当列表中消息数大于5，删除消息数组中的第2条
+            if (parsedMessages.size() >5 ) {
+                parsedMessages.remove(1);
+                jsonRequest.remove("messages");
+                jsonRequest.put("messages", parsedMessages);
+            }
         }
+
     }
 
     // 保存用户对话内容，用于连续对话

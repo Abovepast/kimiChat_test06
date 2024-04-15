@@ -200,7 +200,7 @@ public class MainActivity extends AppCompatActivity{
             // 开启新对话
             initChat(sharedPreferences, "kunkun");
             //dialogClear();
-            String tipStr = "哎哟，你干嘛~~~，KunKun已重新启动！让我们来开始新的对话吧！";
+            String tipStr = "KunKun已重新启动！你可以向我提出任何问题。";
             ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
 
             chatMessages.add(tipInfo);

@@ -105,6 +105,7 @@
                 android:textAlignment="center"
                 android:textColor="@color/black_HW"
                 android:textSize="12sp"
+                android:enabled="false"
                 tools:ignore="HardcodedText,RtlCompat,RtlSymmetry" />
 
         </LinearLayout>
@@ -121,23 +122,23 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="6dp"
                 android:background="@color/sendBtnTrue"
-                android:text="确认"
+                android:text="填入"
                 android:textColor="@color/textColor"
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <Button
-                android:id="@+id/getAKey"
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="6dp"
-                android:background="@color/blue_HW"
-                android:text="获取"
-                android:textColor="@color/textColor"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText"
-                />
+<!--            <Button-->
+<!--                android:id="@+id/getAKey"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_margin="6dp"-->
+<!--                android:background="@color/blue_HW"-->
+<!--                android:text="获取"-->
+<!--                android:textColor="@color/textColor"-->
+<!--                android:textSize="16sp"-->
+<!--                tools:ignore="HardcodedText"-->
+<!--                />-->
 
             <TextView
                 android:id="@+id/goToAKey"
@@ -177,7 +178,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|top"
-                android:text="使用说明"
+                android:text="项目介绍"
                 android:textColor="@color/textColor"
                 android:textSize="18sp"
                 tools:ignore="HardcodedText,RtlHardcoded"
