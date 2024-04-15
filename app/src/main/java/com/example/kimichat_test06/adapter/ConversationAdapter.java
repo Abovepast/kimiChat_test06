@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.kimichat_test06.R;
 import com.example.kimichat_test06.ShowConversation;
+import com.example.kimichat_test06.bean.ChatMessage;
 import com.example.kimichat_test06.bean.Conversation;
 import com.example.kimichat_test06.dao.ChatDatabaseHelper;
 import com.example.kimichat_test06.utils.ParentOnTouchChildClickLinearLayout;
@@ -74,7 +75,8 @@ public class ConversationAdapter extends BaseAdapter {
         }
 
         Conversation conversation = this.conversationList.get(position);
-        viewHolder.saveText.setText(conversation.getChatMessages().get(0).getMessage());
+        List<ChatMessage> cMsgList = conversation.getChatMessages();
+        viewHolder.saveText.setText(cMsgList.get(0).isUser()?cMsgList.get(0).getMessage():cMsgList.get(1).getMessage());
         //---------------获取时间并格式化, 设置时间-------------------//
         long startTime = conversation.getStartTimeStamp();
         // 创建一个SimpleDateFormat对象，指定输出的日期/时间格式
