@@ -24,7 +24,9 @@ import com.example.kimichat_test06.dao.ChatDatabaseHelper;
 import com.example.kimichat_test06.service.KimiChatService;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity{
     private CountDownTimer countDownTimer;
     private String apiKey;
     private long conversationId;
+    private Conversation conversation;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -64,7 +67,7 @@ public class MainActivity extends AppCompatActivity{
                 .usePlugin(GlideImagesPlugin.create(this))
                 .build();
 
-        chatAdapter = new ChatAdapter(chatMessages, markwon, false);
+        chatAdapter = new ChatAdapter(chatMessages, markwon, "kunkun");
 
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
@@ -74,8 +77,7 @@ public class MainActivity extends AppCompatActivity{
 
         ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this);
         // 初始化AI
-        kimi = new KimiChatService();
-        conversationId = new Conversation().getConversationId();
+        initChat(sharedPreferences, "kunkun");
 
         // 当用户点击发送按钮时，创建消息并更新 UI
         userSend.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity{
                     // 设置每1秒更新一次textBar的40秒倒计时，当isFinish为true时，停止倒计时
                     startCountdownTimer();
 
+                    // 等待回复途中,禁止发送消息
                     messageEditText.setText("");
                     userSend.setEnabled(false);
 
@@ -125,12 +128,16 @@ public class MainActivity extends AppCompatActivity{
                         chatMessages.remove(messageBot);
                         messageBot = new ChatMessage(kimiResponse, false, conversationId);
                         chatMessages.add(messageBot);
+                        //tempMessageList.add(messageBot);
 
                         textBar.setText(R.string.jinjincainiao_ai);
                         userSend.setEnabled(true);
-//                        chatAdapter.notifyDataSetChanged();
+
+                        // chatAdapter.notifyDataSetChanged();
                         chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
                         chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+                        // 保存当前对话到历史记录
+                        //AddAMsgToSQLite(messageBot, chatDatabaseHelper);
                     });
                 }).start();
 
@@ -138,6 +145,7 @@ public class MainActivity extends AppCompatActivity{
                 } else {
                     Toast.makeText(MainActivity.this, "请输入内容", Toast.LENGTH_SHORT).show();
                 }
+
             }
             private void startCountdownTimer() {
 
@@ -158,8 +166,9 @@ public class MainActivity extends AppCompatActivity{
                         if (!isFinish) {
                             // 未收到响应时处理超时
                             messageBot = new ChatMessage("KunKun的CPU被干烧了，请重新提问吧", false, conversationId);
-                            chatMessages.add(messageBot);
                             userSend.setEnabled(true);
+                            // 更新并保存消息
+                            //AddAMsgToSQLite(messageBot, chatDatabaseHelper);
                         }
                     }
                 };
@@ -180,16 +189,24 @@ public class MainActivity extends AppCompatActivity{
         });
         // 清空对话
         brainClear.setOnClickListener(v -> {
-            apiKey = sharedPreferences.getString("API_KEY", "");
-            chatAdapter.isEnglishMode = false;
-            conversationId = new Conversation().getConversationId();
-            kimi = new KimiChatService();
-            dialogClear();
+            // 保存之前的聊天记录
+            saveConversation(chatDatabaseHelper);
+            /*if(!conversation.getChatMessages().isEmpty()) {
+                chatDatabaseHelper.saveConversation(conversation);
+                dialogClear();
+                Toast.makeText(this, "对话已保存", Toast.LENGTH_SHORT).show();
+            }*/
+            //dialogClear();
+            // 开启新对话
+            initChat(sharedPreferences, "kunkun");
+            //dialogClear();
             String tipStr = "哎哟，你干嘛~~~，KunKun已重新启动！让我们来开始新的对话吧！";
             ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
+
             chatMessages.add(tipInfo);
             chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
             chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+            //AddAMsgToSQLite(tipInfo, chatDatabaseHelper);
 
             //改变UI
             userSend.setBackground(getDrawable(R.drawable.send_button_select));
@@ -201,20 +218,51 @@ public class MainActivity extends AppCompatActivity{
         });
         // 英语学习模式
         eng_learn.setOnClickListener(v->{
-            chatAdapter.isEnglishMode = true;
-            conversationId = new Conversation().getConversationId();
-            kimi = new KimiChatService(true);
-            dialogClear();
+            saveConversation(chatDatabaseHelper);
+            //dialogClear();
+            initChat(sharedPreferences, "english");
             String tipStr = "KunKun已进入英文句子分析模式!\n" +
                     "直接输入英文句子,我将会分析句子成分。";
             ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
+
             chatMessages.add(tipInfo);
             chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
             chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
 
+            // 保存对话内容
+            //AddAMsgToSQLite(tipInfo, chatDatabaseHelper);
+
             //改变UI
             userSend.setBackground(getDrawable(R.drawable.user_send_english));
         });
+    }
+
+    private void saveConversation(ChatDatabaseHelper chatDatabaseHelper) {
+        if(!conversation.getChatMessages().isEmpty()){
+            if(conversation.getChatMessages().size()>1) {
+                chatDatabaseHelper.saveConversation(conversation);
+                Toast.makeText(this, "对话已保存", Toast.LENGTH_SHORT).show();
+            }
+            dialogClear();
+        }
+    }
+
+    private void initChat(SharedPreferences sharedPreferences, String ChatMode) {
+        apiKey = sharedPreferences.getString("API_KEY", "");
+        chatAdapter.ChatMode = ChatMode;
+        long tempStartTimeStamp = System.currentTimeMillis();
+        long tempConversationId = RandomCID(tempStartTimeStamp);
+        conversation = new Conversation(tempConversationId, tempStartTimeStamp, chatMessages, "KunKun");
+        conversationId = conversation.getConversationId();  // 设置新的对话ID
+        kimi = new KimiChatService(ChatMode);
+    }
+
+    private static long RandomCID(long tempStartTimeStamp) {
+        long randomNumber = (long) (Math.random() * 1000000L);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        Date date = new Date(tempStartTimeStamp);// 将long时间戳转换为Date对象
+        String formattedDateString = formatter.format(date);// 将Date对象格式化为字符串
+        return Long.parseLong(formattedDateString)*1000000L+randomNumber;
     }
 
     @SuppressLint("NotifyDataSetChanged")

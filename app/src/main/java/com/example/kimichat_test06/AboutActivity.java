@@ -56,7 +56,6 @@ public class AboutActivity extends AppCompatActivity {
                         // 用户点击了取消按钮
                         Toast.makeText(AboutActivity.this, "取消操作！", Toast.LENGTH_SHORT).show();
                     }).create().show();
-
         });
 
         // 获取本地保存的API_KEY

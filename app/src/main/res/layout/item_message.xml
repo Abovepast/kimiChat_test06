@@ -6,17 +6,21 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/bot_icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
-        android:src="@drawable/kunkun"
-        android:importantForAccessibility="no" />
+    <RelativeLayout
+        android:id="@+id/rLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/bot_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/kunkun"
+            android:importantForAccessibility="no" />
 
         <TextView
             android:id="@+id/bot_name"
@@ -48,48 +52,84 @@
             android:textIsSelectable="true"
             tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="User"
-        android:textSize="12sp"
-        android:textColor="@color/black_HW"
-        android:textStyle="bold"
-        android:layout_toStartOf="@+id/user_icon"
-        tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="User"
+            android:textSize="12sp"
+            android:textColor="@color/black_HW"
+            android:textStyle="bold"
+            android:layout_toStartOf="@+id/user_icon"
+            tools:ignore="HardcodedText" />
 
-    <TextView
-        android:id="@+id/messageSend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_name"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
-        android:layout_toStartOf="@+id/user_icon"
-        android:maxWidth="300dp"
-        android:background="@drawable/user_message_bubble"
-        android:padding="6dp"
-        android:text="User Message"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        android:textIsSelectable="true"
-        tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/messageSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_name"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toStartOf="@+id/user_icon"
+            android:maxWidth="300dp"
+            android:background="@drawable/user_message_bubble"
+            android:padding="6dp"
+            android:text="User Message"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:textIsSelectable="true"
+            tools:ignore="HardcodedText" />
 
-    <ImageView
-        android:id="@+id/user_icon"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
 
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="2dp"
-        android:src="@drawable/user"
-        android:importantForAccessibility="no" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:src="@drawable/user"
+            android:importantForAccessibility="no" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/msgTime_L"
+        android:layout_width="180dp"
+        android:layout_height="24dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingStart="8dp"
+        android:paddingEnd="5dp"
+        android:background="@drawable/time_shape"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/rLayout"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="时间:"
+            android:textColor="@color/grey_HW"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/testText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="MM月dd日 HH:mm"
+            android:textColor="@color/grey_HW"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
 
 </RelativeLayout>

@@ -7,11 +7,11 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.kimichat_test06_debug"
+        applicationId = "com.example.kimichat_test06"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "V1.5_alpha"
+        versionName = "V1.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

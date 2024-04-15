@@ -1,29 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.kimichat_test06.utils.ParentOnTouchChildClickLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/about"
+    android:orientation="horizontal"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/saveText"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_margin="5dp"
-        android:text="保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本"
-        tools:ignore="HardcodedText"
-        android:textColor="@color/black_HW"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/saveTime"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/item_lv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="保存时间"
-        android:textSize="18sp"
-        tools:ignore="HardcodedText" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:background="@drawable/btn_ripple">
+        <TextView
+            android:id="@+id/saveText"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_margin="5dp"
+            android:text="保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本、保存文本"
+            tools:ignore="HardcodedText"
+            android:textColor="@color/black_HW"
+            android:textSize="18sp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/saveTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="保存时间"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"
+                android:layout_gravity="start|center" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ID: "
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"
+                android:layout_toStartOf="@id/saveCID"/>
+            <TextView
+                android:id="@+id/saveCID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="ABCDEFGHIJKLMN"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_del"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="10dp"
+        tools:ignore="RtlSymmetry"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/delete"
+            android:background="@drawable/delete_button"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
+            android:importantForAccessibility="no" />
+
+    </LinearLayout>
+
+</com.example.kimichat_test06.utils.ParentOnTouchChildClickLinearLayout>

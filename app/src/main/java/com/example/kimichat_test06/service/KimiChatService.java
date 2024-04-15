@@ -1,7 +1,5 @@
 package com.example.kimichat_test06.service;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.alibaba.fastjson.JSON;
@@ -25,23 +23,15 @@ public class KimiChatService {
     private final JSONObject jsonRequest;
     private final JSONArray parsedMessages;
     private final OkHttpClient client;
-//    private static final String API_KEY = "";
 
-    public KimiChatService() {
+    public KimiChatService(String ChatMode) {
         jsonRequest = initModelJSON();
         parsedMessages = jsonRequest.getJSONArray("messages");
         client = getOkHttpClient();
-    }
-
-    public KimiChatService(boolean isEnglish) {
-        if (isEnglish) {
-            Log.d("AAAA:初始化英文模型", "初始化英文模型");
+        if (ChatMode.equals("english")) {
+            String english_learn_model = "接下来我将会连续输入英文句子，你将分析句子成分，分析结果带中文翻译。";
+            saveUserSend(english_learn_model);
         }
-        jsonRequest = initModelJSON();
-        parsedMessages = jsonRequest.getJSONArray("messages");
-        client = getOkHttpClient();
-        String english_learn_model = "接下来我将会连续输入英文句子，你将分析句子成分，分析结果带中文翻译。";
-        saveUserSend(english_learn_model);
     }
 
     public String sendRequestWithOkHttp(String userSend, String API_KEY) throws JSONException, IOException {

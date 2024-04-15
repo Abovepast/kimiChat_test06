@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,12 +21,12 @@ import io.noties.markwon.Markwon;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private final List<ChatMessage> chatMessages;
     private final Markwon markwon;
-    public boolean isEnglishMode;
+    public String ChatMode;
 
-    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon, boolean isEnglishMode) {
+    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon, String ChatMode) {
         this.chatMessages = chatMessages;
         this.markwon = markwon;
-        this.isEnglishMode = isEnglishMode;
+        this.ChatMode = ChatMode;
     }
 
     @NonNull
@@ -47,7 +48,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         // 使用Markwon渲染Markdown
         Spannable spannable = (Spannable) markwon.toMarkdown(markdownText);
-        if (isEnglishMode) {
+        if (ChatMode.equals("english")) {
             holder.receiverIcon.setImageResource(R.drawable.teacher);
             holder.receiverName.setText(R.string.kunkun_english);
         } else {
@@ -73,6 +74,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 //            holder.receiverMessageTextView.setText(message.getMessage());
             holder.receiverMessageTextView.setText(spannable);
         }
+
+//        int ChatSize = getItemCount();
+//        if(position == ChatSize-1 && ) {
+//            holder.msgTime_L.setVisibility(View.VISIBLE);
+//        }
     }
 
     @Override
@@ -88,6 +94,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         public TextView receiverName;
         public TextView userMessageTextView;
         public TextView receiverMessageTextView;
+        public LinearLayout msgTime_L;
 
 
         public ViewHolder(View itemView) {
@@ -100,6 +107,17 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             userName = itemView.findViewById(R.id.user_name);
             receiverName = itemView.findViewById(R.id.bot_name);
+
+            // todo
+            /*
+             * 显示时间在消息列表中,且仅有一个
+             * 可能的方案:
+             * 在Bean中新建属性TimeShowFlag, 只在最后一条消息中显示
+             * 如何判断最后一条消息?
+             * 1. 在Adapter中, 在onBindViewHolder中, 获取position, 判断是否是最后一条消息
+             * 如何判读是否对话结束,仅在对话结束时才有显示时间,并且全局只有一个
+             */
+            msgTime_L = itemView.findViewById(R.id.msgTime_L);
         }
     }
 }

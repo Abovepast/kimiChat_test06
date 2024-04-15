@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_lv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HistoryActivity"
@@ -31,12 +32,14 @@
 
 
     <TextView
+        android:id="@+id/no_history"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:text="作者还没有写完这个功能\n敬请期待！"
+        android:text="没有历史记录！"
         android:textAlignment="center"
         android:gravity="center"
         android:textSize="24sp"
+        android:visibility="gone"
         tools:ignore="HardcodedText" />
 
     <LinearLayout
