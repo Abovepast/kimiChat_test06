@@ -75,7 +75,44 @@ public class MainActivity extends AppCompatActivity{
         SharedPreferences sharedPreferences = getSharedPreferences("kimiChat", MODE_PRIVATE);
         apiKey = sharedPreferences.getString("API_KEY", "");
 
-        ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this);
+        // ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this);
+        try (ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this)) {
+            // 清空对话
+            brainClear.setOnClickListener(v -> {
+                // 保存之前的聊天记录
+                saveConversation(chatDatabaseHelper);
+                //dialogClear();
+                // 开启新对话
+                initChat(sharedPreferences, "kunkun");
+                //dialogClear();
+                String tipStr = "KunKun已重新启动！你可以向我提出任何问题。";
+                ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
+
+                chatMessages.add(tipInfo);
+                chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
+                chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+
+                //改变UI
+                userSend.setBackground(getDrawable(R.drawable.send_button_select));
+            });
+            // 英语学习模式
+            eng_learn.setOnClickListener(v->{
+                saveConversation(chatDatabaseHelper);
+                //dialogClear();
+                initChat(sharedPreferences, "english");
+                String tipStr = "KunKun已进入英文句子分析模式!\n" +
+                        "直接输入英文句子,我将会分析句子成分。";
+                ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
+
+                chatMessages.add(tipInfo);
+                chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
+                chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
+
+                //改变UI
+                userSend.setBackground(getDrawable(R.drawable.user_send_english));
+            });
+        }
+
         // 初始化AI
         initChat(sharedPreferences, "kunkun");
 
@@ -187,54 +224,13 @@ public class MainActivity extends AppCompatActivity{
             Toast.makeText(MainActivity.this, "对话内容清除成功", Toast.LENGTH_SHORT).show();
             return true;
         });
-        // 清空对话
-        brainClear.setOnClickListener(v -> {
-            // 保存之前的聊天记录
-            saveConversation(chatDatabaseHelper);
-            /*if(!conversation.getChatMessages().isEmpty()) {
-                chatDatabaseHelper.saveConversation(conversation);
-                dialogClear();
-                Toast.makeText(this, "对话已保存", Toast.LENGTH_SHORT).show();
-            }*/
-            //dialogClear();
-            // 开启新对话
-            initChat(sharedPreferences, "kunkun");
-            //dialogClear();
-            String tipStr = "KunKun已重新启动！你可以向我提出任何问题。";
-            ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
 
-            chatMessages.add(tipInfo);
-            chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
-            chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
-            //AddAMsgToSQLite(tipInfo, chatDatabaseHelper);
-
-            //改变UI
-            userSend.setBackground(getDrawable(R.drawable.send_button_select));
-        });
         // 历史对话
         history_chat.setOnClickListener(v->{
             Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
             startActivity(intent);
         });
-        // 英语学习模式
-        eng_learn.setOnClickListener(v->{
-            saveConversation(chatDatabaseHelper);
-            //dialogClear();
-            initChat(sharedPreferences, "english");
-            String tipStr = "KunKun已进入英文句子分析模式!\n" +
-                    "直接输入英文句子,我将会分析句子成分。";
-            ChatMessage tipInfo = new ChatMessage(tipStr, false, conversationId);
 
-            chatMessages.add(tipInfo);
-            chatAdapter.notifyItemChanged(chatAdapter.getItemCount()-1);
-            chatRecyclerView.smoothScrollToPosition(chatAdapter.getItemCount()-1);
-
-            // 保存对话内容
-            //AddAMsgToSQLite(tipInfo, chatDatabaseHelper);
-
-            //改变UI
-            userSend.setBackground(getDrawable(R.drawable.user_send_english));
-        });
     }
 
     private void saveConversation(ChatDatabaseHelper chatDatabaseHelper) {
@@ -252,7 +248,7 @@ public class MainActivity extends AppCompatActivity{
         chatAdapter.ChatMode = ChatMode;
         long tempStartTimeStamp = System.currentTimeMillis();
         long tempConversationId = RandomCID(tempStartTimeStamp);
-        conversation = new Conversation(tempConversationId, tempStartTimeStamp, chatMessages, "KunKun");
+        conversation = new Conversation(tempConversationId, tempStartTimeStamp, chatMessages, ChatMode);
         conversationId = conversation.getConversationId();  // 设置新的对话ID
         kimi = new KimiChatService(ChatMode);
     }
