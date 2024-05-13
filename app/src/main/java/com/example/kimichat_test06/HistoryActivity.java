@@ -14,6 +14,7 @@ import com.example.kimichat_test06.adapter.ConversationAdapter;
 import com.example.kimichat_test06.bean.ChatMessage;
 import com.example.kimichat_test06.bean.Conversation;
 import com.example.kimichat_test06.dao.ChatDatabaseHelper;
+import com.example.kimichat_test06.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -86,6 +86,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         return chatMessages.size();
     }
 
+    public String getItem() {
+        // 返回机器人的回复
+        return chatMessages.get(chatMessages.size() - 1).getMessage();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView userIcon;
@@ -118,6 +123,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
              * 如何判读是否对话结束,仅在对话结束时才有显示时间,并且全局只有一个
              */
             msgTime_L = itemView.findViewById(R.id.msgTime_L);
+
         }
     }
 }

@@ -2,7 +2,7 @@
     <string name="app_name">kunKunChat</string>
     <string name="jinjincainiao_ai">KunKunChat</string>
     <string name="author">Author: ShiJin Wang</string>
-    <string name="version">Version: V1.5 正式版</string>
+    <string name="version">Version: V1.5.2</string>
     <string name="content">\u3000该项目基于Moonshot AI的API，使用Okhttp向Moonshot AI发送API请求,对收到的响应后使用FastJSON解析出有效信息装载至消息列表中，并使用适配器的方式结合Markwon进行渲染，最后展现在界面上。\n
         \u3000点击左上角可以重置对话，长按右上角可以清除当前聊天记录，开启新的对话可以保存当前对话记录。</string>
     <string name="github_site"><a href="https://github.com/Abovepast/kimiChat_test06">https://github.com/Abovepast/kimiChat_test06</a></string>
@@ -11,4 +11,224 @@
     <string name="api_key_link"><a href="https://platform.moonshot.cn/console">去注册Moonshot获得免费API_KEY</a></string>
     <string name="kunkun_english">KunKun-English</string>
     <string name="bot_name">KunKun</string>
+
+    <!--    讯飞语言合成添加-->
+    <!-- 请替换成在语音云官网申请的appid -->
+    <string name="app_id">f3d344b6</string>
+    <string name="example_explain">本示例为讯飞语音Android平台开发者提供语音听写、语法识别、语义理解和语音合成等代码样例，旨在让用户能够依据该示例快速开发出基于语音接口的应用程序。</string>
+    <string name="text_tts_source">
+        科大讯飞作为智能语音技术提供商，在智能语音技术领域有着长期的研究积累，并在中文语音合成、语音识别、口语评测等多项技术上拥有技术成果。科大讯飞是我国以语音技术为产业化方向的“国家863计划产业化基地”.....
+    </string>
+    <string name="text_tts_source_en">iFLYTEK is a national key software enterprise dedicated to the research of intelligent speech and language technologies, development of software and chip products, provision of speech information services, and integration of E-government systems. The intelligent speech technology of iFLYTEK, the core technology of the company, represents the top level in the world.</string>
+    <string name="text_isr_abnf_hint">\t上传内容为：\n\t#ABNF 1.0 gb2312;\n\tlanguage zh-CN;\n\tmode voice;\n\troot $main;\n\t$main = $place1 到$place2 ;\n\t$place1 = 北京 | 武汉 | 南京 | 天津 | 东京;\n\t$place2 = 上海 | 合肥;</string>
+    <string name="text_understand_hint">\t您可以说：\n\t今天的天气怎么样?\n\t北京到上海的火车?\n\t来首歌吧?\n\n\t更多语义请登录：\n\thttp://aiui.xfyun.cn/ \n\t配置您的专属语义吧!</string>
+    <!-- 听写 -->
+    <string name="text_begin">请开始说话…</string>
+    <string name="text_begin_recognizer">开始音频流识别</string>
+    <string name="text_begin_ise">开始音频流评测</string>
+    <string name="text_upload_userwords">上传用户词表</string>
+    <string name="text_upload_success">上传成功</string>
+    <string name="text_userword_empty">词表下载失败或内容为空</string>
+    <string name="text_download_success">下载成功</string>
+    <string name="pref_key_iat_show">iat_show</string>
+    <string name="pref_title_iat_show">显示听写界面</string>
+    <string name="text_show_contacts">上传词表显示</string>
+    <string name="text_show_iat_result">听写结果显示</string>
+
+    <string name="pref_key_translate">translate</string>
+    <string name="pref_title_translate">翻译</string>
+
+    <string name="face_model_delete">人脸模型删除</string>
+
+    <string name="title_face_idf">人脸1:N检索示例</string>
+    <string name="title_vocal_idf">声纹1:N检索示例</string>
+
+
+    <!-- 合成 -->
+    <string-array name="engine_entries">
+        <item>本地合成</item>
+        <item>在线合成</item>
+    </string-array>
+    <string-array name="engine_values">
+        <item>local</item>
+        <item>cloud</item>
+    </string-array>
+    <string-array name="voicer_cloud_entries">
+        <item>小燕—女青、中英、普通话</item>
+        <item>小宇—男青、中英、普通话</item>
+        <item>凯瑟琳—女青、英</item>
+        <item>亨利—男青、英</item>
+        <item>玛丽—女青、英</item>
+        <item>小研—女青、中英、普通话</item>
+        <item>小琪—女青、中英、普通话</item>
+        <item>小峰—男青、中英、普通话</item>
+        <item>小梅—女青、中英、粤语</item>
+        <item>小莉—女青、中英、台湾普通话</item>
+        <item>小蓉—女青、中、四川话</item>
+        <item>小芸—女青、中、东北话</item>
+        <item>小坤—男青、中、河南话</item>
+        <item>小强—男青、中、湖南话</item>
+        <item>小莹—女青、中、陕西话</item>
+        <item>小新—男童、中、普通话</item>
+        <item>楠楠—女童、中、普通话</item>
+        <item>老孙—男老、中、普通话</item>
+    </string-array>
+    <string-array name="voicer_cloud_values">
+        <item>xiaoyan</item>
+        <item>xiaoyu</item>
+        <item>catherine</item>
+        <item>henry</item>
+        <item>vimary</item>
+        <item>vixy</item>
+        <item>xiaoqi</item>
+        <item>vixf</item>
+        <item>xiaomei</item>
+        <item>xiaolin</item>
+        <item>xiaorong</item>
+        <item>xiaoqian</item>
+        <item>xiaokun</item>
+        <item>xiaoqiang</item>
+        <item>vixying</item>
+        <item>xiaoxin</item>
+        <item>nannan</item>
+        <item>vils</item>
+    </string-array>
+    <string-array name="emot_entries">
+        <item>正常</item>
+        <item>高兴</item>
+        <item>悲伤</item>
+        <item>生气</item>
+    </string-array>
+    <string-array name="emot_values">
+        <item>neutral</item>
+        <item>happy</item>
+        <item>sad</item>
+        <item>angry</item>
+    </string-array>
+    <string-array name="stream_entries">
+        <item>通话</item>
+        <item>系统</item>
+        <item>铃声</item>
+        <item>音乐</item>
+        <item>闹铃</item>
+        <item>通知</item>
+    </string-array>
+    <string-array name="stream_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="tts_toast_format" formatted="false">缓冲进度为%d%%，播放进度为%d%%</string>
+    <!-- 语言 -->
+    <string-array name="language_entries">
+        <item>普通话</item>
+        <item>粤语</item>
+        <item>英语</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>mandarin</item>
+        <item>cantonese</item>
+        <item>en_us</item>
+    </string-array>
+    <!-- 语音评测 -->
+    <string name="text_en_word">"[word]\napple\nbanana\norange"</string>
+    <string name="text_en_sentence">"The quick brown fox jumps over the lazy dog."</string>
+    <string name="text_en_chapter">"It is never too old to learn, A good beginning makes a good ending."</string>
+    <string name="text_en_simple_expression">"W2Nob2ljZV0KMS4gV2hhdCBzaG91bGQgSSBkbyB3aXRoIHRoZSB0b3BpYz8KMi4gSG93IGNhbiBJIGRlYWwgd2l0aCB0aGUgdG9waWM/CjMuIFdoYXQgY2FuIEkgZG8gd2l0aCB0aGUgdG9waWM/CjQuIFdoYXQgc2hvdWxkIEkgZG8gd2l0aCB0aGlzIHN1YmplY3Q/CjUuIEhvdyBjYW4gSSBkZWFsIHdpdGggdGhpcyBzdWJqZWN0Pwo2LiBXaGF0IGNhbiBJIGRvIHdpdGggdGhpcyBzdWJqZWN0Pwo3LiBXaGF0IHNob3VsZCBJIGRvIHdpdGggdGhpcyB0aXRsZT8KOC4gSG93IGNhbiBJIGRlYWwgd2l0aCB0aGlzIHRpdGxlPwo5LiBXaGF0IGNhbiBJIGRvIHdpdGggdGhpcyB0aXRsZT8KMTAuIFdoYXQgc2hvdWxkIEkgbWFuYWdlIHRoaXMgdGl0bGU/CjExLiBIb3cgY2FuIEkgbWFuYWdlIHRoaXMgdGl0bGU/CjEyLiBXaGF0IGNhbiBJIG1hbmFnZSB0aGlzIHRpdGxlPwoxMy4gV2hhdCBzaG91bGQgSSBtYW5hZ2UgdGhpcyBzdWJqZWN0PwoxNC4gSG93IGNhbiBJIG1hbmFnZSB0aGlzIHN1YmplY3Q/CjE1LiBXaGF0IHNob3VsZCBJIG1hbmFnZSB0aGlzIHRvcGljPwoxNi4gSG93IGNhbiBJIG1hbmFnZSB0aGlzIHRvcGljPwoxNy4gV2hhdCBjYW4gSSBtYW5hZ2UgdGhpcyB0b3BpYz8KMTguIEhvdyBzaG91bGQgSSBkZWFsIHdpdGggdGhpcyB0b3BpYz8KMTkuIEhvdyBzaG91bGQgSSBkZWFsIHdpdGggdGhpcyB0aXRsZT8KMjAuIEhvdyBzaG91bGQgSSBkZWFsIHdpdGggdGhpcyBzdWJqZWN0Pwpba2V5d29yZHNdCndoYXQgZG8gdG9waWMgfCBob3cgZGVhbCB0b3BpYyB8IHdoYXQgZG8gc3ViamVjdCB8IGhvdyBkZWFsIHN1YmplY3QgfCB3aGF0IGRvIHRpdGxlIHwgaG93IGRlYWwgdGl0bGUgfCB3aGF0IG1hbmFnZSB0aXRsZSB8IGhvdyBtYW5hZ2UgdGl0bGUgfCB3aGF0IG1hbmFnZSBzdWJqZWN0IHwgaG93IG1hbmFnZSBzdWJqZWN0IHwgd2hhdCBtYW5hZ2UgdG9waWMgfCBob3cgbWFuYWdlIHRvcGljCltzY3JpcHRdClc6IENvbmdyYXR1bGF0aW9ucywgVG9tISBZb3UgZ2F2ZSBhIHdvbmRlcmZ1bCBzcGVlY2ggeWVzdGVyZGF5IG1vcm5pbmcuCk06IFRoYW5rIHlvdSBNYXJ5LgpXOiBJIHdpbGwgZ2l2ZSBhIHNwZWVjaCBuZXh0IFdlZG5lc2RheSBpbiBteSBFbmdsaXNoIGNsYXNzLCBidXQgSSBhbSBub3QgZnVsbHkgcHJlcGFyZWQgeWV0LiBDYW4geW91IGdpdmUgbWUgc29tZSBhZHZpY2U/Ck06IFN1cmUuIFdoYXQncyB5b3VyIHRvcGljPwpXOiBXZWxsLCBJIGFtIGFsd2F5cyBjb25jZXJuZWQgYWJvdXQgZW52aXJvbm1lbnRhbCBpc3N1ZXMsIHNvIG15IHRvcGljIGlzIEVudmlyb25tZW50YWwgUHJvdGVjdGlvbi4KTTogVGhpcyBpcyBhIGdvb2QgdG9waWMsIGJ1dCBpdCBpcyB0b28gYmlnLgpbcXVlc3Rpb25dCuaIkeivpeWmguS9leWkhOeQhui/meS4qumimOebru+8nwpbbWFjYW5zd2VyXQpZb3UgaGF2ZSB0byBuYXJyb3cgZG93biB5b3VyIHRvcGljLiBGb3IgZXhhbXBsZSwgeW91IG1heSB0YWxrIGFib3V0IHdoYXQgY29sbGVnZSBzdHVkZW50cyBjYW4gZG8gdG8gcHJvdGVjdCBvdXIgZW52aXJvbm1lbnQuIEFmdGVyIHRoYXQsIHlvdSBuZWVkIHRvIGRvIHNvbWUgcmVzZWFyY2ggdG8gY29sbGVjdCByZWxldmFudCBpbmZvcm1hdGlvbiBhcyBtdWNoIGFzIHBvc3NpYmxlLiBUaGVuLCB5b3Ugc2hvdWxkIG9yZ2FuaXplIHlvdXIgYXJndW1lbnRzIHdlbGwuIExvZ2ljYWwgb3JnYW5pemF0aW9uIGlzIHZlcnkgaW1wb3J0YW50Lg=="</string>
+    <string name="text_en_read_choice">"W2Nob2ljZV0KMS4gU25ha2VzLgoyLiBDaGlsZHJlbi4KMy4gQ2F0cy4KW2tleXdvcmRzXQpjYXRzCltxdWVzdGlvbl0KV2hhdCBkaWQgdGhlIHdvbWFuIGRpc2xpa2U/"</string>
+    <string name="text_en_topic">"W3RvcGljXQoxLiBUaGUgR29vc2UgVGhpZWYKMS4xLiAgVG9tIHdlbnQgdG8gcHJpbWFyeSBzY2hvb2wgaW4gdGhlIGNvdW50cnlzaWRlLiBOZWFyIGhpcyBjbGFzc3Jvb20sIHRoZXJlIHdhcyBhIHNtYWxsIHBvbmQgd2hlcmUgdHdvIGdlZXNlIHdlcmUgcmFpc2VkLiBTdHVkZW50cyB3ZXJlIGFsbCBmb25kIG9mIHRoZW0uIE9uZSBkYXksIHdoZW4gVG9tIHBhc3NlZCB0aGUgc2Nob29sIGtpdGNoZW4sIGhlIGhlYXJkIHRoZSBjb29rcyB0YWxraW5nIGFib3V0IGtpbGxpbmcgdGhlIGdlZXNlIGZvciB0aGUgdGVhY2hlcnMnIENocmlzdG1hcyBkaW5uZXIuIFRvbSBnb3QgYW5ncnksIGFuZCBzYWlkIHRvIGhpbXNlbGYsICJJIHdvbid0IGxldCB0aGVtIGJlIGVhdGVuISIgVGhhdCBuaWdodCwgVG9tIHdvcmtlZCBvdXQgYSBwbGFuLiBIZSB3YXMgZ29pbmcgdG8gaGlkZSB0aGVtIHNvbWV3aGVyZSBmYXIgYXdheSBmcm9tIHRoZSBzY2hvb2wuIFRoZSBuZXh0IG1vcm5pbmcsIFRvbSB3ZW50IHRvIHNjaG9vbCBpbiBoaXMgZmF0aGVyJ3MgYmlnIGNvYXQuIER1cmluZyB0aGUgYnJlYWssIGhlIHJ1c2hlZCB0byB0aGUgcG9uZC4gV2l0aG91dCBhbnlvbmUgYXJvdW5kLCBoZSBjYXVnaHQgdGhlIGdlZXNlIGFuZCBwdXNoZWQgdGhlbSBpbnNpZGUgdGhlIGNvYXQuIEhvd2V2ZXIsIHRoZSBnZWVzZSB3ZXJlIGxhcmdlciB0aGFuIGhlIGhhZCB0aG91Z2h0LCBhbmQgdGhleSB0cmllZCB2ZXJ5IGhhcmQgdG8gZnJlZSB0aGVtc2VsdmVzIGZyb20gdGhlIGNvYXQuIFRoZSBiaWcgbm9pc2UgY2F1Z2h0IHRoZSBub3RpY2Ugb2YgdGhlIGhlYWQgdGVhY2hlciBhbmQgdGhlIHN0dWRlbnRzLCBhbmQgdGhleSBhbGwgcmFuIHRvIHRoZSBwb25kLiBUaGUgaGVhZCB0ZWFjaGVyIGFza2VkIGZvciBhbiBleHBsYW5hdGlvbi4gTG9va2luZyBhdCB0aGUgdGVhY2hlciB3aXRoIGZlYXIsIFRvbSB0b2xkIHRoZSBzdG9yeSBhbmQgc2FpZCwgIkl0IGlzIHVuZmFpciB0byB0aGVtLiBXZSBhbGwgbG92ZSB0aGVtISIgVGhlIGhlYWQgdGVhY2hlciBzbWlsZWQgYW5kIHByb21pc2VkIG5vdCB0byBoYXZlIHRoZW0ga2lsbGVkIGZvciB0aGUgQ2hyaXN0bWFzIGRpbm5lci4KW2tleXBvaW50XQoxLiBUb20gd2VudCB0byBwcmltYXJ5IHNjaG9vbCBpbiB0aGUgY291bnRyeXNpZGUuIE5lYXIgaGlzIGNsYXNzcm9vbSwgdGhlcmUgd2FzIGEgc21hbGwgcG9uZCB3aGVyZSB0d28gZ2Vlc2Ugd2VyZSByYWlzZWQuCjIuIFN0dWRlbnRzIHdlcmUgYWxsIGZvbmQgb2YgdGhlbS4KMy4gT25lIGRheSwgd2hlbiBUb20gcGFzc2VkIHRoZSBzY2hvb2wga2l0Y2hlbiwgaGUgaGVhcmQgdGhlIGNvb2tzIHRhbGtpbmcgYWJvdXQga2lsbGluZyB0aGUgZ2Vlc2UgZm9yIHRoZSB0ZWFjaGVycycgQ2hyaXN0bWFzIGRpbm5lci4KNC4gVG9tIGdvdCBhbmdyeSwgYW5kIHNhaWQgdG8gaGltc2VsZiwgIkkgd29uJ3QgbGV0IHRoZW0gYmUgZWF0ZW4hIiBUaGF0IG5pZ2h0LCBUb20gd29ya2VkIG91dCBhIHBsYW4uIEhlIHdhcyBnb2luZyB0byBoaWRlIHRoZW0gc29tZXdoZXJlIGZhciBhd2F5IGZyb20gdGhlIHNjaG9vbC4KNS4gVGhlIG5leHQgbW9ybmluZywgVG9tIHdlbnQgdG8gc2Nob29sIGluIGhpcyBmYXRoZXIncyBiaWcgY29hdC4gRHVyaW5nIHRoZSBicmVhaywgaGUgcnVzaGVkIHRvIHRoZSBwb25kLiBXaXRob3V0IGFueW9uZSBhcm91bmQsIGhlIGNhdWdodCB0aGUgZ2Vlc2UgYW5kIHB1c2hlZCB0aGVtIGluc2lkZSB0aGUgY29hdC4KNi4gSG93ZXZlciwgdGhlIGdlZXNlIHdlcmUgbGFyZ2VyIHRoYW4gaGUgaGFkIHRob3VnaHQsIGFuZCB0aGV5IHRyaWVkIHZlcnkgaGFyZCB0byBmcmVlIHRoZW1zZWx2ZXMgZnJvbSB0aGUgY29hdC4gVGhlIGJpZyBub2lzZSBjYXVnaHQgdGhlIG5vdGljZSBvZiB0aGUgaGVhZCB0ZWFjaGVyIGFuZCB0aGUgc3R1ZGVudHMsCjcuIFRoZXkgYWxsIHJhbiB0byB0aGUgcG9uZC4KOC4gVGhlIGhlYWQgdGVhY2hlciBhc2tlZCBmb3IgYW4gZXhwbGFuYXRpb24uCjkuICBMb29raW5nIGF0IHRoZSB0ZWFjaGVyIHdpdGggZmVhciwgVG9tIHRvbGQgdGhlIHN0b3J5IGFuZCBzYWlkLCAiSXQgaXMgdW5mYWlyIHRvIHRoZW0uIFdlIGFsbCBsb3ZlIHRoZW0hIgoxMC4gVGhlIGhlYWQgdGVhY2hlciBzbWlsZWQgYW5kIHByb21pc2VkIG5vdCB0byBoYXZlIHRoZW0ga2lsbGVkIGZvciB0aGUgQ2hyaXN0bWFzIGRpbm5lci4="</string>
+    <string name="text_en_retell">"W3RvcGljXQoxLiBUaGUgR29vc2UgVGhpZWYKMS4xLiAgVG9tIHdlbnQgdG8gcHJpbWFyeSBzY2hvb2wgaW4gdGhlIGNvdW50cnlzaWRlLiBOZWFyIGhpcyBjbGFzc3Jvb20sIHRoZXJlIHdhcyBhIHNtYWxsIHBvbmQgd2hlcmUgdHdvIGdlZXNlIHdlcmUgcmFpc2VkLiBTdHVkZW50cyB3ZXJlIGFsbCBmb25kIG9mIHRoZW0uIE9uZSBkYXksIHdoZW4gVG9tIHBhc3NlZCB0aGUgc2Nob29sIGtpdGNoZW4sIGhlIGhlYXJkIHRoZSBjb29rcyB0YWxraW5nIGFib3V0IGtpbGxpbmcgdGhlIGdlZXNlIGZvciB0aGUgdGVhY2hlcnMnIENocmlzdG1hcyBkaW5uZXIuIFRvbSBnb3QgYW5ncnksIGFuZCBzYWlkIHRvIGhpbXNlbGYsICJJIHdvbid0IGxldCB0aGVtIGJlIGVhdGVuISIgVGhhdCBuaWdodCwgVG9tIHdvcmtlZCBvdXQgYSBwbGFuLiBIZSB3YXMgZ29pbmcgdG8gaGlkZSB0aGVtIHNvbWV3aGVyZSBmYXIgYXdheSBmcm9tIHRoZSBzY2hvb2wuIFRoZSBuZXh0IG1vcm5pbmcsIFRvbSB3ZW50IHRvIHNjaG9vbCBpbiBoaXMgZmF0aGVyJ3MgYmlnIGNvYXQuIER1cmluZyB0aGUgYnJlYWssIGhlIHJ1c2hlZCB0byB0aGUgcG9uZC4gV2l0aG91dCBhbnlvbmUgYXJvdW5kLCBoZSBjYXVnaHQgdGhlIGdlZXNlIGFuZCBwdXNoZWQgdGhlbSBpbnNpZGUgdGhlIGNvYXQuIEhvd2V2ZXIsIHRoZSBnZWVzZSB3ZXJlIGxhcmdlciB0aGFuIGhlIGhhZCB0aG91Z2h0LCBhbmQgdGhleSB0cmllZCB2ZXJ5IGhhcmQgdG8gZnJlZSB0aGVtc2VsdmVzIGZyb20gdGhlIGNvYXQuIFRoZSBiaWcgbm9pc2UgY2F1Z2h0IHRoZSBub3RpY2Ugb2YgdGhlIGhlYWQgdGVhY2hlciBhbmQgdGhlIHN0dWRlbnRzLCBhbmQgdGhleSBhbGwgcmFuIHRvIHRoZSBwb25kLiBUaGUgaGVhZCB0ZWFjaGVyIGFza2VkIGZvciBhbiBleHBsYW5hdGlvbi4gTG9va2luZyBhdCB0aGUgdGVhY2hlciB3aXRoIGZlYXIsIFRvbSB0b2xkIHRoZSBzdG9yeSBhbmQgc2FpZCwgIkl0IGlzIHVuZmFpciB0byB0aGVtLiBXZSBhbGwgbG92ZSB0aGVtISIgVGhlIGhlYWQgdGVhY2hlciBzbWlsZWQgYW5kIHByb21pc2VkIG5vdCB0byBoYXZlIHRoZW0ga2lsbGVkIGZvciB0aGUgQ2hyaXN0bWFzIGRpbm5lci4KW2tleXBvaW50XQoxLiBUb20gd2VudCB0byBwcmltYXJ5IHNjaG9vbCBpbiB0aGUgY291bnRyeXNpZGUuIE5lYXIgaGlzIGNsYXNzcm9vbSwgdGhlcmUgd2FzIGEgc21hbGwgcG9uZCB3aGVyZSB0d28gZ2Vlc2Ugd2VyZSByYWlzZWQuCjIuIFN0dWRlbnRzIHdlcmUgYWxsIGZvbmQgb2YgdGhlbS4KMy4gT25lIGRheSwgd2hlbiBUb20gcGFzc2VkIHRoZSBzY2hvb2wga2l0Y2hlbiwgaGUgaGVhcmQgdGhlIGNvb2tzIHRhbGtpbmcgYWJvdXQga2lsbGluZyB0aGUgZ2Vlc2UgZm9yIHRoZSB0ZWFjaGVycycgQ2hyaXN0bWFzIGRpbm5lci4KNC4gVG9tIGdvdCBhbmdyeSwgYW5kIHNhaWQgdG8gaGltc2VsZiwgIkkgd29uJ3QgbGV0IHRoZW0gYmUgZWF0ZW4hIiBUaGF0IG5pZ2h0LCBUb20gd29ya2VkIG91dCBhIHBsYW4uIEhlIHdhcyBnb2luZyB0byBoaWRlIHRoZW0gc29tZXdoZXJlIGZhciBhd2F5IGZyb20gdGhlIHNjaG9vbC4KNS4gVGhlIG5leHQgbW9ybmluZywgVG9tIHdlbnQgdG8gc2Nob29sIGluIGhpcyBmYXRoZXIncyBiaWcgY29hdC4gRHVyaW5nIHRoZSBicmVhaywgaGUgcnVzaGVkIHRvIHRoZSBwb25kLiBXaXRob3V0IGFueW9uZSBhcm91bmQsIGhlIGNhdWdodCB0aGUgZ2Vlc2UgYW5kIHB1c2hlZCB0aGVtIGluc2lkZSB0aGUgY29hdC4KNi4gSG93ZXZlciwgdGhlIGdlZXNlIHdlcmUgbGFyZ2VyIHRoYW4gaGUgaGFkIHRob3VnaHQsIGFuZCB0aGV5IHRyaWVkIHZlcnkgaGFyZCB0byBmcmVlIHRoZW1zZWx2ZXMgZnJvbSB0aGUgY29hdC4gVGhlIGJpZyBub2lzZSBjYXVnaHQgdGhlIG5vdGljZSBvZiB0aGUgaGVhZCB0ZWFjaGVyIGFuZCB0aGUgc3R1ZGVudHMsCjcuIFRoZXkgYWxsIHJhbiB0byB0aGUgcG9uZC4KOC4gVGhlIGhlYWQgdGVhY2hlciBhc2tlZCBmb3IgYW4gZXhwbGFuYXRpb24uCjkuICBMb29raW5nIGF0IHRoZSB0ZWFjaGVyIHdpdGggZmVhciwgVG9tIHRvbGQgdGhlIHN0b3J5IGFuZCBzYWlkLCAiSXQgaXMgdW5mYWlyIHRvIHRoZW0uIFdlIGFsbCBsb3ZlIHRoZW0hIgoxMC4gVGhlIGhlYWQgdGVhY2hlciBzbWlsZWQgYW5kIHByb21pc2VkIG5vdCB0byBoYXZlIHRoZW0ga2lsbGVkIGZvciB0aGUgQ2hyaXN0bWFzIGRpbm5lci4="</string>
+    <string name="text_en_picture_talk">"W3RvcGljXQoxLiBUaHJvdyBMaXR0ZXIKMS4xLiBNYXJ5IGFuZCBoZXIgY2xhc3NtYXRlcyB3ZW50IG91dGluZyBsYXN0IHdlZWtlbmQuIFNvbWVvbmUgd2FzIGZseWluZyBraXRlcywgc29tZSBwZW9wbGUgd2VyZSBoYXZpbmcgc25hY2tzLiBUaGVyZSB3ZXJlIGxpdHRlcnMgb24gdGhlIHJvYWQuIE1hcnkgcGlja2VkIHVwIHRoZSB3YXN0ZSBib3R0bGVzIGFuZCBwYXBlciB0aGUgcHV0IHRoZW0gaW4gdGhlIGR1c3RiaW4uIFRoZSB0ZWFjaGVyIHByYWlzZWQgTWFyeSBmb3IgaGVyIGdvb2QgZGVlZC4KMS4yLiBMYXN0IHdlZWtlbmQsIE1hcnkgd2VudCB0byB0aGUgcGFyayB3aXRoIGhlciBjbGFzc21hdGVzLiBUaGV5IGhhZCBhIHBpY25pYyBpbiB0aGUgcGFyay4gU29tZSBwZW9wbGUgZmxldyBraXRlcyB0aGVyZS4gVGhleSBoYWQgZ3JlYXQgZnVuIHRoZXJlLiBNYXJ5IHNhdyBzb21lIHJ1YmJpc2ggb24gdGhlIHJvYWQuIFNoZSBwaWNrZWQgdXAgdGhlIHJ1YmJpc2ggYW5kIHRocmV3IGl0IGludG8gdGhlIGR1c3RiaW4uIFRoZSB0ZWFjaGVyIHByYWlzZWQgTWFyeS4KMS4zLiBMYXN0IFNhdHVyZGF5LCBNYXJ5J3MgY2xhc3Mgd2VudCB0byB0aGUgcGFyay4gVGhleSBicm91Z2h0IHNvbWUgZm9vZCBhbmQgaGFkIGEgcGljbmljIG9uIHRoZSBncmFzcy4gQWZ0ZXIgdGhhdCwgdGhleSBmbGV3IGtpdGVzIHRoZXJlLiBTdWRkZW5seSwgTWFyeSBmb3VuZCB0aGF0IHRoZXJlIHdhcyBzb21lIHJ1YmJpc2ggb24gdGhlIHJvYWQuIFNoZSB0aGVuIHBpY2tlZCB1cCB0aGUgcnViYmlzaCBhbmQgdGhyZXcgaXQgaW50byB0aGUgZHVzdGJpbi4gTWFyeSdzIHRlYWNoZXIgc2F3IHRoaXMuIFNoZSBzYWlkICJXZWxsIGRvbmUiIHRvIE1hcnkuIE1hcnkgd2FzIHZlcnkgaGFwcHkuCjEuNC4gTWFyeSB3ZW50IHRvIHRoZSBwYXJrIHdpdGggaGVyIGZyaWVuZCBsYXN0IHdlZWtlbmQuIFRoZXkgaGFkIGEgcGljbmljIHRoZXJlLCB3aGlsZSBzb21lIHBlb3BsZSB3ZXJlIGZseWluZyBraXRlcy4gTWFyeSdzIGZyaWVuZCB3YW50ZWQgdG8gZmx5IGEga2l0ZSB0b28uIFNvIHNoZSB0aHJldyB3YXN0ZSBib3R0bGVzIGFuZCBwYXBlciBvbiB0aGUgZ3JvdW5kIGFuZCByYW4gYXdheS4gTWFyeSBzYXcgdGhpcyBhbmQgcGlja2VkIHVwIHRoZSBydWJiaXNoLiBUaGVuIHNoZSB0aHJldyBpdCBpbnRvIHRoZSBnYXJiYWdlIGNhbi4gQSB3b21hbiBub3RpY2VkIHdoYXQgTWFyeSBoYWQgZG9uZS4gU2hlIHByYWlzZWQgTWFyeSBmb3IgaGVyIGdvb2QgYmVoYXZpb3IuCjEuNS4gTWFyeSB3ZW50IHRvIHRoZSBwYXJrIHRvIGhhdmUgYSBwaWNuaWMgd2l0aCBoZXIgZnJpZW5kIGxhc3QgU3VuZGF5LiBUaGV5IGJyb3VnaHQgc29tZSBqdWljZSBhbmQgYnJlYWQgYXMgbHVuY2guIEFmdGVyIGx1bmNoLCB0aGV5IGpvaW5lZCBvdGhlciBwZW9wbGUgdG8gZmx5IGtpdGVzLiBNYXJ5IHNhdyBzb21lIHdhc3RlIGJvdHRsZXMgYW5kIHBhcGVyIG9uIHRoZSBncm91bmQuIFNvbWVvbmUgdGhyZXcgdGhlbSBhd2F5IGFmdGVyIGhhdmluZyBhIHBpY25pYy4gTWFyeSBjbGVhbmVkIHRoZSByb2FkLCBwdXR0aW5nIHRoZSBnYXJiYWdlIGludG8gYSBnYXJiYWdlIGNhbi4gQSBsYWR5IHNhdyB0aGlzIGFuZCBwcmFpc2VkIE1hcnkgZm9yIHdoYXQgc2hlIGhhZCBkb25lLgoxLjYuIExhc3Qgd2Vla2VuZCwgTWFyeSBhbmQgaGVyIGNsYXNzbWF0ZXMgd2VudCB0byB0aGUgcGFyay4gU29tZSBvZiB0aGVtIGZsZXcga2l0ZXMsIGFuZCBzb21lIG9mIHRoZW0gaGFkIGZvb2Qgb24gdGhlIGdyYXNzLiBNYXJ5IGJyb3VnaHQgc29tZSBqdWljZSwgYnJlYWQgYW5kIGJpc2N1aXRzIHRvIHNoYXJlIHdpdGggaGVyIGZyaWVuZC4gQWZ0ZXIgdGhleSBmaW5pc2hlZCBlYXRpbmcsIGhlciBmcmllbmQgd2VudCB0byBmbHkgYSBraXRlLiBNYXJ5IGdhdGhlcmVkIHRoZWlyIHdhc3RlIGJvdHRsZXMgYW5kIHBhcGVyIGFuZCB3YXMgYWJvdXQgdG8gdGhyZXcgdGhlbSBpbnRvIHRoZSBkdXN0YmluLiBTdWRkZW5seSwgc2hlIHNhdyBzb21lIGdhcmJhZ2Ugb24gdGhlIGdyb3VuZC4gU2hlIHBpY2tlZCB1cCB0aGUgZ2FyYmFnZSwgYW5kIHRocmV3IGl0IGF3YXkgd2l0aCB0aGVpciB3YXN0ZSBib3R0bGVzIGFuZCBwYXBlci4gSGVyIGdvb2QgYmVoYXZpb3Igd2FzIG5vdGljZWQgYnkgdGhlIG1hbmFnZXIgb2YgdGhlIHBhcmsuIFRoZSBtYW5hZ2VyIHByYWlzZWQgaGVyLgoxLjcuIExhc3Qgd2Vla2VuZCwgTWFyeSB3ZW50IG91dGluZyB3aXRoIGhlciBjbGFzc21hdGVzLiBNYXJ5IGFuZCBoZXIgZnJpZW5kIHdlcmUgaGF2aW5nIGRyaW5rcyBhbmQgc29tZSBicmVhZC4gT3RoZXJzIHdlcmUgZmx5aW5nIGtpdGVzIG9yIHBsYXlpbmcgZ2FtZXMuIEFmdGVyIGEgd2hpbGUsIHRoZXJlIHdlcmUgbGl0dGVycyBvbiB0aGUgZ3JvdW5kLiBNYXJ5IHNhdyB0aGVzZSBhbmQgc3RhcnRlZCB0byBwaWNrIHVwIGFsbCB0aGUgd2FzdGUgcGFwZXIgYW5kIGJvdHRsZXMuIFNoZSBwdXQgdGhlbSBpbnRvIHRoZSBkdXN0YmluLiBNYXJ5J3MgdGVhY2hlciBwcmFpc2VkIGhlciBmb3Igd2hhdCBzaGUgaGFkIGRvbmUuCjEuOC4gTWFyeSB3ZW50IGZvciBhbiBvdXRpbmcgd2l0aCBoZXIgY2xhc3NtYXRlcyBsYXN0IHdlZWtlbmQuIFNvbWUgcGVvcGxlIHBsYXllZCBnYW1lcyBhbmQgc29tZSBwZW9wbGUgd2VudCB0byBmbHkga2l0ZXMuIE1hcnkgYW5kIExpbHkgd2VyZSBoYXZpbmcgc29tZSBzbmFja3MuIFdoZW4gdGhleSB3ZXJlIGFib3V0IHRvIHBsYXksIE1hcnkgbm90aWNlZCB0aGF0IHRoZXJlIHdlcmUgbGl0dGVycyBhcm91bmQgdGhlbS4gU28gc2hlIHBpY2tlZCB1cCB0aGUgd2FzdGUgYm90dGxlcyBhbmQgcGFwZXIgYW5kIHRocmV3IHRoZW0gaW4gdGhlIGR1c3RiaW4uIEp1c3QgdGhlbiwgaGVyIHRlYWNoZXIgc2F3IGl0IGFuZCBwcmFpc2VkIE1hcnkgZm9yIHdoYXQgc2hlIGRpZC4KMS45LiBUaGUgc2Nob29sIGhlbGQgYW4gb3V0aW5nIGxhc3Qgd2Vla2VuZC4gTWFyeSBhbmQgaGVyIGNsYXNzbWF0ZXMgaGFkIGZ1biB0aGVyZS4gU29tZSBwZW9wbGUgd2VyZSBwbGF5aW5nIGdhbWVzIHdoaWxlIHNvbWUgd2VyZSBmbHlpbmcga2l0ZXMuIE1hcnkgYW5kIG9uZSBvZiBoZXIgY2xhc3NtYXRlcyB3ZXJlIGhhdmluZyBzb21lIHNuYWNrcy4gVGhlbiwgTWFyeSBmb3VuZCB0aGF0IHRoZXJlIHdlcmUgc29tZSB3YXN0ZSBwYXBlciBhbmQgYm90dGxlcyBvbiB0aGUgZ3JvdW5kLiBTbyBzaGUgdGhyZXcgYWxsIG9mIHRoZW0gaW50byB0aGUgZHVzdGJpbi4gQXQgbGFzdCwgdGhlIGdyb3VuZCBiZWNhbWUgY2xlYW4gYW5kIE1hcnkgd2FzIHByYWlzZWQgYnkgaGVyIHRlYWNoZXIuCjEuMTAuIE1hcnkgYW5kIGhlciBjbGFzc21hdGVzIHdlbnQgZm9yIGFuIG91dGluZyBsYXN0IHdlZWtlbmQuIFRoZXkgd2VyZSB2ZXJ5IGhhcHB5LiBTb21lb25lIHdhcyBmbHlpbmcga2l0ZXMsIHNvbWUgd2VyZSBoYXZpbmcgZm9vZC4gQWZ0ZXIgaGF2aW5nIGx1bmNoLCB0aGV5IHdlbnQgb24gcGxheWluZyBnYW1lcy4gTWFyeSBub3RpY2VkIHRoYXQgdGhlcmUgd2VyZSBzb21lIGxpdHRlcnMgb24gdGhlIGdyb3VuZC4gU28gc2hlIHBpY2tlZCB1cCBhbGwgdGhlIGxpdHRlcnMgYW5kIHRoZW4gcHV0IHRoZW0gaW4gdGhlIGR1c3RiaW4uIE1hcnkncyBnb29kIGRlZWQgd2FzIHNhdyBieSBoZXIgdGVhY2hlci4gVGhlIHRlYWNoZXIgcHJhaXNlZCBNYXJ5IGFuZCBmZWx0IHByb3VkIG9mIHdoYXQgc2hlIGhhZCBkb25lLgoxLjExLiBMYXN0IFNhdHVyZGF5LCBNYXJ5J3MgdGVhY2hlciB0b29rIGhlciBjbGFzcyB0byBhbiBvdXRpbmcuIFRoZSB3aG9sZSBjbGFzcyB3ZXJlIHZlcnkgaGFwcHkgdGhlbi4gU29tZSBwZW9wbGUgd2VyZSBmbHlpbmcga2l0ZXMgd2hpbGUgc29tZSB3ZXJlIHBsYXlpbmcgZ2FtZXMuIEF0IGx1bmNoIHRpbWUsIHRoZXkgaGFkIGZvb2QgYW5kIGRyYW5rIGp1aWNlIHRvZ2V0aGVyLiBBZnRlciB0aGF0LCB0aGVyZSB3ZXJlIHNvbWUgd2FzdGUgYm90dGxlcyBhbmQgcGFwZXIgb24gdGhlIHJvYWQuIE1hcnkgc3RhcnRlZCB0byBwaWNrIHRoZW0gdXAgYW5kIHRocmV3IHRoZW0gaW50byB0aGUgZHVzdGJpbi4gSGVyIHRlYWNoZXIgc2F3IGl0IGFuZCBzcG9rZSBoaWdobHkgb2Ygd2hhdCBNYXJ5IGhhZCBkb25lLiBNYXJ5IGZlbHQgdmVyeSBwcm91ZCBvZiBoZXJzZWxmLgoxLjEyLiBMYXN0IHdlZWtlbmQgTWFyeSBhbmQgaGVyIGNsYXNzbWF0ZXMgd2VudCBvdXRpbmcgYW5kIGhhZCBhIHBpY25pYy4gU29tZSBwZW9wbGUgd2VyZSBmbHlpbmcga2l0ZXMsIHNvbWUgcGVvcGxlIHdlcmUgaGF2aW5nIHNuYWNrcy4gU3VkZGVubHksIHRoZXkgZm91bmQgdGhlcmUgd2FzIGEgbG90IG9mIGxpdHRlciBvbiB0aGUgcm9hZC4gTWFyeSBwaWNrZWQgdXAgdGhlIHdhc3RlIGJvdHRsZXMgYW5kIHBhcGVyIHRoZSBwdXQgdGhlbSBpbiB0aGUgZHVzdGJpbi4gVGhlIHRlYWNoZXIgcHJhaXNlZCBNYXJ5IGZvciBoZXIgZ29vZCBiZWhhdmlvci4KMS4xMy4gTGFzdCB3ZWVrZW5kIE1hcnkgd2VudCB0byB0aGUgcGFyayB3aXRoIFNvbWUgZnJpZW5kcy4gU29tZSBvZiB0aGVtIHdlcmUgZmx5aW5nIGtpdGVzLiBTb21lIGZyaWVuZHMgd2VyZSBlYXRpbmcgZm9vZC4gU3VkZGVubHksIHRoZXkgc2F3IHRoZXJlIHdhcyBzb21lIHJ1YmJpc2ggb24gdGhlIHJvYWQuIE1hcnkgcGlja2VkIHVwIHRoZSBydWJiaXNoIGFuZCBwdXQgaXQgaW50byB0aGUgZ2FyYmFnZS4gVGhlIHRlYWNoZXIgc2FpZCBNYXJ5IHdhcyBnb29kLgoxLjE0LiAgTGFzdCB3ZWVrZW5kIE1hcnkgd2VudCB0byB0aGUgcGFyay4gU29tZSBjbGFzc21hdGVzIHdlcmUgZmx5aW5nIGtpdGVzLCBzb21lIGNsYXNzbWF0ZSB3ZXJlIGVhdGluZyBmb29kLiBTdWRkZW5seSwgdGhleSBzYXcgdGhlcmUgd2FzIGEgbG90IG9mIHJ1YmJpc2ggb24gdGhlIHJvYWQuIE1hcnkgcGlja2VkIHVwIHRoZSBydWJiaXNoIGFuZCBwdXQgaXQgaW50byB0aGUgZHVzdGJpbi4gVGhlIHRlYWNoZXIgc2FpZCBNYXJ5IHdhcyBhIGdvb2QgZ2lybC4KMS4xNS4gIExhc3Qgd2Vla2VuZCBNYXJ5IGhhZCBhIHBpY25pYyB3aXRoIGhlciBjb3VzaW5zIGluIHRoZSBwYXJrLiBTb21lIHdlcmUgZmx5aW5nIGtpdGVzLCBzb21lIHdlcmUgZWF0aW5nIGZvb2QuIFRoZXkgc2F3IHRoZXJlIHdhcyBzb21lIGxpdHRlciBvbiB0aGUgcm9hZC4gTWFyeSBwaWNrZWQgdXAgdGhlIGxpdHRlciBhbmQgdGhyZXcgaXQgaW50byB0aGUgZHVzdGJpbi4gSGVyIG1vdGhlciBzYWlkIE1hcnkgd2FzIGdvb2QuCjEuMTYuICBMYXN0IHdlZWtlbmQgTWFyeSBoYWQgYSBwaWNuaWMgd2l0aCBoZXIgY291c2lucyBpbiB0aGUgcGFyay4gU29tZSBmbGV3IGtpdGVzLCBzb21lIGF0ZSBmb29kLiBTdWRkZW5seSwgdGhleSBzYXcgc29tZW9uZSBkcm9wcGVkIGEgbG90IG9mIGxpdHRlciBvbiB0aGUgcm9hZC4gTWFyeSBwaWNrZWQgdXAgdGhlIGxpdHRlciBhbmQgdGhyZXcgaXQgaW50byB0aGUgZHVzdGJpbi4gSGVyIG1vdGhlciBzYWlkIE1hcnkgZGlkIGEgZ29vZCBqb2IuCjEuMTcuICBMYXN0IHdlZWtlbmQsIE1hcnkgd2VudCB0byB0aGUgcGFyayBmb3IgYSBwaWNuaWMgd2l0aCBoZXIgZnJpZW5kLiBUaGV5IGJyb3VnaHQgYSBsb3Qgb2YgZm9vZCBhbmQgZW5qb3llZCBpdCB2ZXJ5IG11Y2guIExpbHkgd2VudCB0byBmbHkga2l0ZSBidXQgc2hlIGxlZnQgbWFueSBydWJiaXNoIG9uIHRoZSBncm91bmQuIE1hcnJ5IGNsZWFuZWQgaXQgYW5kIHB1dCBpdCBpbnRvIHRoZSBydWJiaXNoIGNhbi4gVGhlIHRlYWNoZXIgc2F3IGl0IGFuZCBzaGUgc2FpZCB0byBNYXJyeSwgInlvdSBhcmUgYSBnb29kIGdpcmwuIiBXaGF0IGEgZ29vZCBnaXJsIQ=="</string>
+    <string name="text_en_oral_translation">"W3RvcGljXQoxLiBCcml0aXNoIFBlb3BsZQoxLjEuICBCcml0aXNoIHBlb3BsZSB1c3VhbGx5IHNheSAiaGVsbG8iIG9yICJuaWNlIHRvIG1lZXQgeW91IiBhbmQgc2hha2UgeW91ciBoYW5kIHdoZW4gdGhleSBtZWV0IHlvdSBmb3IgdGhlIGZpcnN0IHRpbWUuIFRoZXkgYmVoYXZlIHBvbGl0ZWx5IGluIHB1YmxpYy4gVGhleSB0aGluayBpdCdzIHJ1ZGUgdG8gcHVzaCBpbiBiZWZvcmUgb3RoZXJzLiBUaGV5IGFsd2F5cyBxdWV1ZS4gVGhleSBhcmUgdmVyeSBwb2xpdGUgYXQgaG9tZSBhcyB3ZWxsLiBXaGVuIGluIFJvbWUsIGRvIGFzIHRoZSBSb21hbnMgZG8uIFdoZW4gd2UgYXJlIGluIGEgc3RyYW5nZSBwbGFjZSwgd2Ugc2hvdWxkIGRvIGFzIHRoZSBsb2NhbCBwZW9wbGUgZG8uCjEuMi4gRm9yIHRoZSBmaXJzdCBtZWV0aW5nLCB0aGUgRW5nbGlzaCB3aWxsIHVzdWFsbHkgc2F5ICJoZWxsbyIgb3IgIm5pY2UgdG8gbWVldCB5b3UiIGFuZCBzaGFrZSBoYW5kcyB3aXRoIHlvdS4gSW4gdGhlIHB1YmxpYyBwbGFjZXMsIHRoZXkgYmVoYXZlIHRoZW1zZWx2ZXMgd2VsbO+8myB0aGV5IHRoaW5rIHRoYXQganVtcGluZyBpbiB0aGUgbGluZSBpcyBhIHJ1ZGUgYmVoYXZpb3IsIHNvIHRoZXkgYWx3YXlzIGxpbmUgdXAuIFRoZXkgYXJlIG9mdGVuIHZlcnkgcG9saXRlIGF0IGhvbWUuIFdoZW4gd2UgYXJlIGluIGEgc3RyYW5nZSBwbGFjZSwgZG8gaW4gUm9tZSBhcyBSb21lIGRvZXMuIFdlIHNob3VsZCBiZWhhdmUgd2VsbCBhcyBsb2NhbCBwZW9wbGUuCjEuMy4gV2hlbiB0aGV5IG1lZXQgZm9yIHRoZSBmaXJzdCB0aW1lLCB0aGUgQnJpdGlzaCB1c3VhbGx5IHNheSAiaGVsbG8iIG9yICJuaWNlIHRvIG1lZXQgeW91IiwgYW5kIHNoYWtlIGhhbmRzIHdpdGggZWFjaCBvdGhlci4gSW4gcHVibGljLCB0aGV5IGJlaGF2ZSB0aGVtc2VsdmVzIGFwcHJvcHJpYXRlbHkuIFRoZXkgdGhpbmsgaXQgaXMgaW1wb2xpdGUgdG8ganVtcCB0aGUgcXVldWUsIGFuZCB0aGV5IGFsd2F5cyB3YWl0IGluIGxpbmUgcGF0aWVudGx5IGZvciB0aGVpciB0dXJucy4gVGhleSBhcmUgYWxzbyB2ZXJ5IHBvbGl0ZSBhdCBob21lLiBBcyB0aGUgc2F5aW5nIGdvZXMsICJ3aGVuIGluIFJvbWUsIGRvIGFzIHRoZSBSb21hbnMgZG8iLiBXaGVuIHdlIGFyZSBpbiBhIHN0cmFuZ2UgcGxhY2UsIHdlIHNob3VsZCBhY3QgYXMgdGhlIGxvY2FscyBkby4KMS40LiBXaGVuIGZpcnN0IG1lZXQsIEVuZ2xpc2ggYXJlIGxpa2VseSB0byBzYXkgImhlbGxvIiBvciAibmljZSB0byBtZWV0IHlvdSIgYW5kIHNoYWtlIGhhbmRzIHdpdGggeW91LiBUaGV5IGJlaGF2ZSB3ZWxsIGluIHB1YmxpYy4gVGhleSB1c3VhbGx5IGxpbmUgdXAgYmVjYXVzZSB0aGV5IHRoaW5rIHF1ZXVlIGp1bXBpbmcgaXMgdmVyeSBpbXBvbGl0ZS4gQW5kIHRoZXkgYXJlIGFsc28gdmVyeSBwb2xpdGUgYXQgaG9tZS4gVGhlcmUgaXMgYW4gb2xkIHNheWluZyAiRG8gaW4gUm9tZSBhcyBSb21lIGRvZXMiLiBTbyB3aGVuIHdlIGFyZSBpbiBhIG5ldyBwbGFjZSwgd2Ugc2hvdWxkIGJlaGF2ZSBvdXJzZWx2ZXMgYXMgdGhlIGxvY2FscyBkby4KMS41LiBXaGVuIG1lZXRpbmcgZm9yIHRoZSBmaXJzdCB0aW1lLCBFbmdsaXNobWVuIHVzdWFsbHkgc2F5ICJoZWxsbyIgb3IgIm5pY2UgdG8gbWVldCB5b3UiIHdpdGggYSBoYW5kc2hha2UuIFRoZXkgYmVoYXZlIHRoZW1zZWx2ZXMgd2VsbCBpbiBwdWJsaWMgcGxhY2VzLiBUaGV5IHJlZ2FyZCBqdW1waW5nIGEgcXVldWUgYXMgb25lIG9mIHRoZSBydWRlIGJlaGF2aW9yLCBzbyB0aGV5IGFsd2F5cyBxdWV1ZSB1cC4gVGhleSBhcmUgYWxzbyB2ZXJ5IHBvbGl0ZSBhdCBob21lLiBXaGVuIGluIFJvbWUsIGRvIGFzIHRoZSBSb21hbnMgZG8uIFdoZW4gd2UgYXJlIGluIGEgc3RyYW5nZSBwbGFjZSwgd2Ugc2hvdWxkIGJlaGF2aW9yIGp1c3QgbGlrZSB0aGUgbG9jYWwgcGVvcGxlLgoxLjYuIEZvciB0aGUgZmlyc3QgbWVldGluZywgRW5nbGlzaCBwZW9wbGUgdXN1YWxseSBzYXkgIkhlbGxvIiBvciAiTmljZSB0byBtZWV0IHlvdSIgYW5kIHNoYWtlIGhhbmRzIHdpdGggeW91LiBJbiB0aGUgcHVibGljIHBsYWNlLCB0aGV5IGFsc28gYWN0IHZlcnkgZGVjZW50bHkuIEluIHRoZWlyIHZpZXdzLCBpdCBpcyB2ZXJ5IGltcG9saXRlIHRvIGN1dCBpbiBsaW5lLiBUaGV5IGhhdmUgZm9ybWVkIGEgaGFiaXQgdG8gd2FpdCBpbiBhIHF1ZXVlLiBBdCBob21lLCB0aGV5IGFyZSBhbHNvIHZlcnkgcG9saXRlLiBXaGVuIGluIGEgc3RyYW5nZSBwbGFjZSwgd2Ugc2hvdWxkIGRvIGluIFJvbWUgYXMgdGhlIFJvbWFucyBkby4gTW9yZW92ZXIsIGl0IGlzIGFsc28gcG9saXRlIHRoYXQgd2UgYmVoYXZlIGxpa2UgdGhlIGxvY2FsIHBlb3BsZS4KMS43LiBJbiBmaXJzdCBtZWV0aW5nLCB0aGUgRW5nbGlzaCBvZnRlbiBzYXkgImhpIiBvciAibmljZSB0byBtZWV0IHlvdSEiIGFuZCB0aGVuIHNoYWtlIGhhbmRzIHdpdGggeW91LiBJbiBwdWJsaWMgb2NjYXNpb25zLCB0aGV5IGJlaGF2ZSBtYW5uZXJseS4gVGhleSB0aGluayBqdW1waW5nIGEgcXVldWUgaXMgaW1wb2xpdGUgYW5kIHRoZXkgYWx3YXlzIGxpbmUgdXAuIEFsc28sIHRoZXkgYXJlIHBvbGl0ZSBhdCBob21lLiBXaGVuIGluIFJvbWUgZG8gYXMgdGhlIFJvbWFucyBkby4gV2hlbiB3ZSBhcmUgaW4gYSBzdHJhbmdlIGxhbmQsIHdlIHNob3VsZCBiZWhhdmUgbGlrZSB0aGUgbmF0aXZlcy4KW3ZvY2FidWxhcnldCmJlaGF2aW9yIC9iIGloICdoaCBleSB2IHkgYXgvCnVuY291cnRlb3VzIC8sYWggbiAnayBlciB0IGlyIHMv"</string>
+
+    <string name="text_cn_syllable">"知，痴，是"</string>
+    <string name="text_cn_word">"磁铁，率领，脆弱，动手，古筝"</string>
+    <string name="text_cn_sentence">"一座座雪峰插入云霄，峰顶银光闪闪，大大小小的湖泊，像颗颗宝石镶嵌在彩带般的沟谷中。"</string>
+    <string name="text_cn_chapter">"床前明月光，疑是地上霜。举头望明月，低头思故乡。"</string>
+    <string-array name="ise_language_entries">
+        <item>英语</item>
+        <item>汉语</item>
+    </string-array>
+    <string-array name="ise_language_values">
+        <item>en_us</item>
+        <item>zh_cn</item>
+    </string-array>
+
+
+    <string-array name="category_entries">
+        <item>单字</item>
+        <item>词语</item>
+        <item>句子</item>
+        <item>篇章朗读</item>
+        <item>英文情景反应</item>
+        <item>英文选择题</item>
+        <item>英文自由题</item>
+        <item>英文复述题</item>
+        <item>英文看图说话</item>
+        <item>英文口头翻译</item>
+    </string-array>
+
+    <string-array name="category_values">
+        <item>read_syllable</item>
+        <item>read_word</item>
+        <item>read_sentence</item>
+        <item>read_chapter</item>
+        <item>simple_expression</item>
+        <item>read_choice</item>
+        <item>topic</item>
+        <item>retell</item>
+        <item>picture_talk</item>
+        <item>oral_translation</item>
+    </string-array>
+    <string-array name="result_level_entries">
+        <item>plain</item>
+        <item>complete</item>
+    </string-array>
+    <!-- 标点符号 -->
+    <string-array name="punc_entries">
+        <item>有标点</item>
+        <item>无标点</item>
+    </string-array>
+    <string-array name="punc_values">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+    <string-array name="dwa_entries">
+        <item>开启</item>
+        <item>关闭</item>
+    </string-array>
+    <string-array name="iat_language_entries">
+        <item>中文</item>
+        <item>英语</item>
+        <item>日语</item>
+        <item>俄语</item>
+        <item>西班牙语</item>
+        <item>法语</item>
+        <item>韩语</item>
+    </string-array>
+    <string-array name="iat_language_value">
+        <item>zh_cn</item>
+        <item>en_us</item>
+        <item>ja_jp</item>
+        <item>ru-ru</item>
+        <item>es_es</item>
+        <item>fr_fr</item>
+        <item>ko_kr</item>
+    </string-array>
+
+
+    <!-- 语言 -->
+    <string-array name="machine_entries">
+        <item>鲁谷</item>
+        <item>广州</item>
+        <item>森华</item>
+    </string-array>
+    <string-array name="machine_values">
+        <item>http://bj.voicecloud.cn/msp.do</item>
+        <item>http://gz.voicecloud.cn/msp.do</item>
+        <item>http://dx.xf-yun.com/msp.do</item>
+    </string-array>
 </resources>

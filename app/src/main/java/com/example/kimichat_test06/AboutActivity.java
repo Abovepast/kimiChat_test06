@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kimichat_test06.R;
+
 public class AboutActivity extends AppCompatActivity {
 
     @Override

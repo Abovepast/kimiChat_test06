@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kimichat_test06.adapter.ChatAdapter;
 import com.example.kimichat_test06.bean.ChatMessage;
 import com.example.kimichat_test06.dao.ChatDatabaseHelper;
+import com.example.kimichat_test06.R;
 
 import java.util.List;
 

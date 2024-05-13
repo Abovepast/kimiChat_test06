@@ -15,7 +15,6 @@ import android.view.ViewTreeObserver;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kimichat_test06.R;
 import com.example.kimichat_test06.ShowConversation;
@@ -88,7 +87,7 @@ public class ConversationAdapter extends BaseAdapter {
         viewHolder.saveCID.setText(String.valueOf(conversation.getConversationId()));
         // 点击项目跳转页面显示对话内容
         viewHolder.item_lv.setOnClickListener(v -> {
-            Toast.makeText(context, "点击了项目", Toast.LENGTH_SHORT).show();
+            // 点击了项目
             Intent intent = new Intent( context, ShowConversation.class);
             intent.putExtra("conversationId", conversation.getConversationId());
             intent.putExtra("conversationName", conversation.getConPayerName());
