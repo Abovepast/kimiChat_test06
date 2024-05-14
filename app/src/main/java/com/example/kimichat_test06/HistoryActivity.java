@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kimichat_test06.adapter.ChatAdapter;
 import com.example.kimichat_test06.adapter.ConversationAdapter;
+import com.example.kimichat_test06.adapter.OnItemClickListener;
 import com.example.kimichat_test06.bean.ChatMessage;
 import com.example.kimichat_test06.bean.Conversation;
 import com.example.kimichat_test06.dao.ChatDatabaseHelper;
-import com.example.kimichat_test06.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 import io.noties.markwon.Markwon;
 import io.noties.markwon.image.glide.GlideImagesPlugin;
 
-public class HistoryActivity extends AppCompatActivity {
+public class HistoryActivity extends AppCompatActivity implements OnItemClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class HistoryActivity extends AppCompatActivity {
         Markwon markwon = Markwon.builder(this)
                 .usePlugin(GlideImagesPlugin.create(this))
                 .build();
-        new ChatAdapter(chatMessages, markwon, "kunkun");
+        new ChatAdapter(chatMessages, markwon, "kunkun", this);
 
         ImageView back_to_main = findViewById(R.id.back_to_main);
         TextView no_history = findViewById(R.id.no_history);
@@ -53,5 +53,10 @@ public class HistoryActivity extends AppCompatActivity {
         //---------------逻辑实现-----------------------------//
         // 返回按钮
         back_to_main.setOnClickListener(v -> finish());
+    }
+
+    @Override
+    public void onItemClick(String data) {
+
     }
 }

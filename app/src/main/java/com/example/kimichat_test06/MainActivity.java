@@ -25,13 +25,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kimichat_test06.adapter.ChatAdapter;
+import com.example.kimichat_test06.adapter.OnItemClickListener;
 import com.example.kimichat_test06.bean.ChatMessage;
 import com.example.kimichat_test06.bean.Conversation;
 import com.example.kimichat_test06.dao.ChatDatabaseHelper;
 import com.example.kimichat_test06.service.KimiChatService;
 import com.example.kimichat_test06.setting.TtsSettings;
 import com.example.kimichat_test06.utils.SpeechApp;
-import com.example.kimichat_test06.R;
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
 import com.iflytek.cloud.SpeechConstant;
@@ -53,7 +53,7 @@ import java.util.Objects;
 import io.noties.markwon.Markwon;
 import io.noties.markwon.image.glide.GlideImagesPlugin;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnItemClickListener {
 
     private RecyclerView chatRecyclerView;
     private EditText messageEditText;
@@ -72,25 +72,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SpeechSynthesizer mTts;
 
     // 默认发音人
-    private String voicer = "xiaoyan";
+    private String voicer = "xiaoqi";
 
     private String[] mCloudVoicersEntries;
     private String[] mCloudVoicersValue;
     private String texts = "";
 
     // 缓冲进度
-    private int mPercentForBuffering = 0;
+    // private int mPercentForBuffering = 0;
     // 播放进度
     private int mPercentForPlaying = 0;
 
-    // 云端/本地单选按钮
+    /*// 云端/本地单选按钮
     private RadioGroup mRadioGroup;
     // 引擎类型
-    private final String mEngineType = SpeechConstant.TYPE_CLOUD;
+    private final String mEngineType = SpeechConstant.TYPE_CLOUD;*/
 
     private Toast mToast;
     private SharedPreferences mSharedPreferences;
-    private File pcmFile;
+    // private File pcmFile;
     //------------------------------------//
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .usePlugin(GlideImagesPlugin.create(this))
                 .build();
 
-        chatAdapter = new ChatAdapter(chatMessages, markwon, "kunkun");
+        chatAdapter = new ChatAdapter(chatMessages, markwon, "kunkun", this);
 
         chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         chatRecyclerView.setAdapter(chatAdapter);
@@ -287,8 +287,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initVoiceMode() {
-        findViewById(R.id.userPlay).setOnClickListener(this);   // 播放
-        findViewById(R.id.userStop).setOnClickListener(this); // 取消
+//        findViewById(R.id.userPlay).setOnClickListener(this);   // 播放
+//        findViewById(R.id.userStop).setOnClickListener(this); // 取消
         findViewById(R.id.userSetting).setOnClickListener(this); // 设置
         findViewById(R.id.userPronunciation).setOnClickListener(this); // 发音人选择
 
@@ -347,18 +347,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         int id = view.getId();
         if (id == R.id.userSetting) {
-            if (SpeechConstant.TYPE_CLOUD.equals(mEngineType)) {
-                Intent intent = new Intent(MainActivity.this, TtsSettings.class);
-                startActivity(intent);
-            } else {
-                showTip("请前往xfyun.cn下载离线合成体验");
-            }
+            Intent intent = new Intent(MainActivity.this, TtsSettings.class);
+            startActivity(intent);
             // 开始合成
             // 收到onCompleted 回调时，合成结束、生成合成音频
             // 合成的音频格式：只支持pcm格式
-        } else if (id == R.id.userPlay) {
-            pcmFile = new File(Objects.requireNonNull(getExternalCacheDir()).getAbsolutePath(), "tts_pcmFile.pcm");
-            pcmFile.delete();
+        }
+        /*else if (id == R.id.userPlay) {
+            // pcmFile = new File(Objects.requireNonNull(getExternalCacheDir()).getAbsolutePath(), "tts_pcmFile.pcm");
+            // pcmFile.delete();
             texts = ((TextView) findViewById(R.id.tts_text)).getText().toString();
             // 设置参数
             setParam();
@@ -372,7 +369,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.userStop) {
             mTts.stopSpeaking();
             // 暂停播放
-        }
+        }*/
         /*else if (id == R.id.tts_pause) {
             mTts.pauseSpeaking();
             // 继续播放
@@ -400,11 +397,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             public void onClick(DialogInterface dialog,
                                                 int which) { // 点击了哪一项
                                 voicer = mCloudVoicersValue[which];
-                                if ("catherine".equals(voicer) || "henry".equals(voicer) || "vimary".equals(voicer)) {
-                                    ((TextView) findViewById(R.id.tts_text)).setText(R.string.text_tts_source_en);
-                                } else {
-                                    ((TextView) findViewById(R.id.tts_text)).setText(R.string.text_tts_source);
-                                }
+//                                if ("catherine".equals(voicer) || "henry".equals(voicer) || "vimary".equals(voicer)) {
+//                                    ((TextView) findViewById(R.id.tts_text)).setText(R.string.text_tts_source_en);
+//                                } else {
+//                                    ((TextView) findViewById(R.id.tts_text)).setText(R.string.text_tts_source);
+//                                }
                                 selectedNum = which;
                                 dialog.dismiss();
                             }
@@ -458,7 +455,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                      String info) {
             // 合成进度
             Log.e("MscSpeechLog_", "percent =" + percent);
-            mPercentForBuffering = percent;
+            // mPercentForBuffering = percent;
             /*showTip(String.format(getString(R.string.tts_toast_format),
                     mPercentForBuffering, mPercentForPlaying));*/
         }
@@ -480,16 +477,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onCompleted(SpeechError error) {
             showTip("播放完成");
+            showTip(String.valueOf(mPercentForPlaying));
             if (error != null) {
+
                 showTip(error.getPlainDescription(true));
             }
         }
 
         @Override
         public void onEvent(int eventType, int arg1, int arg2, Bundle obj) {
+            /**
+             * 无关紧要的代码, 简化掉~~
+             * 2024年5月14日21:53:01
+             */
             //	 以下代码用于获取与云端的会话id，当业务出错时将会话id提供给技术支持人员，可用于查询会话日志，定位出错原因
             //	 若使用本地能力，会话id为null
-            if (SpeechEvent.EVENT_SESSION_ID == eventType) {
+            /*if (SpeechEvent.EVENT_SESSION_ID == eventType) {
                 String sid = obj.getString(SpeechEvent.KEY_EVENT_SESSION_ID);
                 Log.d(TAG, "session id =" + sid);
             }
@@ -500,8 +503,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.e(TAG, "EVENT_TTS_BUFFER = " + buf.length);
                 }
                 // 保存文件
-                appendFile(pcmFile, buf);
-            }
+                // appendFile(pcmFile, buf);
+            }*/
 
         }
     };
@@ -524,25 +527,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // 清空参数
         mTts.setParameter(SpeechConstant.PARAMS, null);
         // 根据合成引擎设置相应参数
-        if (mEngineType.equals(SpeechConstant.TYPE_CLOUD)) {
-            mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD);
-            // 支持实时音频返回，仅在 synthesizeToUri 条件下支持
-            mTts.setParameter(SpeechConstant.TTS_DATA_NOTIFY, "1");
-            //	mTts.setParameter(SpeechConstant.TTS_BUFFER_TIME,"1");
+        mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_CLOUD);
+        // 支持实时音频返回，仅在 synthesizeToUri 条件下支持
+        mTts.setParameter(SpeechConstant.TTS_DATA_NOTIFY, "1");
+        //	mTts.setParameter(SpeechConstant.TTS_BUFFER_TIME,"1");
 
-            // 设置在线合成发音人
-            mTts.setParameter(SpeechConstant.VOICE_NAME, voicer);
-            //设置合成语速
-            mTts.setParameter(SpeechConstant.SPEED, mSharedPreferences.getString("speed_preference", "50"));
-            //设置合成音调
-            mTts.setParameter(SpeechConstant.PITCH, mSharedPreferences.getString("pitch_preference", "50"));
-            //设置合成音量
-            mTts.setParameter(SpeechConstant.VOLUME, mSharedPreferences.getString("volume_preference", "50"));
-        } else {
-            mTts.setParameter(SpeechConstant.ENGINE_TYPE, SpeechConstant.TYPE_LOCAL);
-            mTts.setParameter(SpeechConstant.VOICE_NAME, "");
-
-        }
+        // 设置在线合成发音人
+        mTts.setParameter(SpeechConstant.VOICE_NAME, voicer);
+        //设置合成语速
+        mTts.setParameter(SpeechConstant.SPEED, mSharedPreferences.getString("speed_preference", "50"));
+        //设置合成音调
+        mTts.setParameter(SpeechConstant.PITCH, mSharedPreferences.getString("pitch_preference", "50"));
+        //设置合成音量
+        mTts.setParameter(SpeechConstant.VOLUME, mSharedPreferences.getString("volume_preference", "50"));
 
         //设置播放器音频流类型
         mTts.setParameter(SpeechConstant.STREAM_TYPE, mSharedPreferences.getString("stream_preference", "3"));
@@ -555,7 +552,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Objects.requireNonNull(getExternalFilesDir("msc")).getAbsolutePath() + "/tts.pcm");
     }
 
-    private void appendFile(File file, byte[] buffer) {
+    /**
+     * 简化掉添加文件的方法~~
+     * 2024年5月14日21:49:02
+     */
+    /*private void appendFile(File file, byte[] buffer) {
         try {
             if (!file.exists()) {
                 boolean b = file.createNewFile();
@@ -567,7 +568,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (IOException e) {
             Log.e("IOException", e.toString());
         }
-    }
+    }*/
 
     @Override
     protected void onDestroy() {
@@ -577,5 +578,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mTts.destroy();
         }
         super.onDestroy();
+    }
+
+    @Override
+    public void onItemClick(String msg) {
+
+        // 根据播放进度来适应逻辑~~
+        if (mPercentForPlaying > 0 && mPercentForPlaying < 90) {
+            mTts.stopSpeaking();
+            mPercentForPlaying = 0;
+        } else {
+            // pcmFile = new File(Objects.requireNonNull(getExternalCacheDir()).getAbsolutePath(), "tts_pcmFile.pcm");
+            // pcmFile.delete();
+            // texts = ((TextView) findViewById(R.id.tts_text)).getText().toString();
+            texts = msg;
+            // 设置参数
+            setParam();
+            // 合成并播放
+            int code = mTts.startSpeaking(texts, mTtsListener);
+
+            if (code != ErrorCode.SUCCESS) {
+                showTip("语音合成失败,错误码: " + code + ",请点击网址https://www.xfyun.cn/document/error-code查询解决方案");
+            }
+        }
     }
 }

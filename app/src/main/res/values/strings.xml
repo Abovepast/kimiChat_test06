@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">kunKunChat</string>
+    <string name="app_name">kKChat-Voice</string>
     <string name="jinjincainiao_ai">KunKunChat</string>
     <string name="author">Author: ShiJin Wang</string>
-    <string name="version">Version: V1.5.2</string>
+    <string name="version">Version: V1.5.3-语音版</string>
     <string name="content">\u3000该项目基于Moonshot AI的API，使用Okhttp向Moonshot AI发送API请求,对收到的响应后使用FastJSON解析出有效信息装载至消息列表中，并使用适配器的方式结合Markwon进行渲染，最后展现在界面上。\n
         \u3000点击左上角可以重置对话，长按右上角可以清除当前聊天记录，开启新的对话可以保存当前对话记录。</string>
     <string name="github_site"><a href="https://github.com/Abovepast/kimiChat_test06">https://github.com/Abovepast/kimiChat_test06</a></string>

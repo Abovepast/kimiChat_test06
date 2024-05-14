@@ -9,15 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kimichat_test06.adapter.ChatAdapter;
+import com.example.kimichat_test06.adapter.OnItemClickListener;
 import com.example.kimichat_test06.bean.ChatMessage;
 import com.example.kimichat_test06.dao.ChatDatabaseHelper;
-import com.example.kimichat_test06.R;
 
 import java.util.List;
 
 import io.noties.markwon.Markwon;
 
-public class ShowConversation extends AppCompatActivity {
+public class ShowConversation extends AppCompatActivity implements OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +33,16 @@ public class ShowConversation extends AppCompatActivity {
 
         try(ChatDatabaseHelper chatDatabaseHelper = new ChatDatabaseHelper(this)) {
             List<ChatMessage> chatMessages = chatDatabaseHelper.getChatMessages_cid(getIntent().getLongExtra("conversationId", 0));
-            ChatAdapter chatAdapter = new ChatAdapter(chatMessages, Markwon.create(this), getIntent().getStringExtra("conversationName"));
+            ChatAdapter chatAdapter = new ChatAdapter(chatMessages, Markwon.create(this), getIntent().getStringExtra("conversationName"), this);
             showRecyclerView.setAdapter(chatAdapter);
         }
 
         // 返回按钮
         back.setOnClickListener(v -> finish());
+    }
+
+    @Override
+    public void onItemClick(String data) {
+
     }
 }

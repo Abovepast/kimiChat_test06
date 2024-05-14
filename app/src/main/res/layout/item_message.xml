@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/bot_icon"
+            android:id="@+id/receive_icon"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
@@ -31,7 +31,7 @@
             android:textColor="@color/black_HW"
             android:textStyle="bold"
             android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/bot_icon"
+            android:layout_toEndOf="@+id/receive_icon"
             tools:ignore="HardcodedText" />
         <TextView
             android:id="@+id/messageReceive"
@@ -45,10 +45,10 @@
             android:layout_below="@+id/bot_name"
             android:background="@drawable/receiver_message_bubble"
             android:padding="6dp"
-            android:text="Bot Message"
+            android:text="Receive Message"
             android:textColor="@color/textColor"
             android:textSize="16sp"
-            android:layout_toEndOf="@+id/bot_icon"
+            android:layout_toEndOf="@+id/receive_icon"
             android:textIsSelectable="true"
             tools:ignore="HardcodedText" />
 
@@ -95,6 +95,60 @@
             android:layout_marginBottom="2dp"
             android:src="@drawable/user"
             android:importantForAccessibility="no" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+
+        android:layout_below="@+id/rLayout"
+        android:layout_centerHorizontal="true"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/receiveVoice"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:backgroundTint="@color/receiveMsg"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:shape="oval"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/voice"
+            app:iconGravity="textStart"
+            app:iconTint="@color/textColor"
+            android:paddingStart="6dp"
+            app:rippleColor="@color/grey_bg"
+            tools:ignore="RtlSymmetry" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/userVoice"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/receiveMsg"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:padding="0dp"
+            android:shape="oval"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/voice"
+            app:iconGravity="textStart"
+            app:iconTint="@color/textColor"
+            android:paddingStart="6dp"
+            app:rippleColor="@color/grey_bg"
+            tools:ignore="RtlSymmetry" />
+
     </RelativeLayout>
 
     <LinearLayout

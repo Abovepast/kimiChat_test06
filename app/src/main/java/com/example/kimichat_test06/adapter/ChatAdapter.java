@@ -4,6 +4,7 @@ import android.text.Spannable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,18 +16,23 @@ import com.example.kimichat_test06.R;
 import com.example.kimichat_test06.bean.ChatMessage;
 
 import java.util.List;
+import java.util.Objects;
 
 import io.noties.markwon.Markwon;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder>{
     private final List<ChatMessage> chatMessages;
     private final Markwon markwon;
     public String ChatMode;
+    //-------语音合成接口回调------//
+    private final OnItemClickListener mListener;
 
-    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon, String ChatMode) {
+
+    public ChatAdapter(List<ChatMessage> chatMessages, Markwon markwon, String ChatMode, OnItemClickListener listener) {
         this.chatMessages = chatMessages;
         this.markwon = markwon;
         this.ChatMode = ChatMode;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -44,10 +50,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChatMessage message = chatMessages.get(position);
-        String markdownText = message.getMessage(); // 假设getMessage()返回Markdown文本
+        String msg = message.getMessage(); // 假设getMessage()返回Markdown文本
 
         // 使用Markwon渲染Markdown
-        Spannable spannable = (Spannable) markwon.toMarkdown(markdownText);
+        Spannable markdownMsg = (Spannable) markwon.toMarkdown(msg);
         if (ChatMode.equals("english")) {
             holder.receiverIcon.setImageResource(R.drawable.teacher);
             holder.receiverName.setText(R.string.kunkun_english);
@@ -59,21 +65,48 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             holder.userIcon.setVisibility(View.VISIBLE);
             holder.userName.setVisibility(View.VISIBLE);
             holder.userMessageTextView.setVisibility(View.VISIBLE);
+            holder.userVoice.setVisibility(View.VISIBLE);
+
             holder.receiverIcon.setVisibility(View.GONE);
             holder.receiverName.setVisibility(View.GONE);
             holder.receiverMessageTextView.setVisibility(View.GONE);
+            holder.receiveVoice.setVisibility(View.GONE);
 //            holder.userMessageTextView.setText(message.getMessage());
-            holder.userMessageTextView.setText(spannable);
+            // 使用Markwon渲染Markdown
+            holder.userMessageTextView.setText(markdownMsg);
         } else {
             holder.userIcon.setVisibility(View.GONE);
             holder.userName.setVisibility(View.GONE);
             holder.userMessageTextView.setVisibility(View.GONE);
+            holder.userVoice.setVisibility(View.GONE);
+
             holder.receiverName.setVisibility(View.VISIBLE);
             holder.receiverIcon.setVisibility(View.VISIBLE);
             holder.receiverMessageTextView.setVisibility(View.VISIBLE);
+            holder.receiveVoice.setVisibility(View.VISIBLE);
 //            holder.receiverMessageTextView.setText(message.getMessage());
-            holder.receiverMessageTextView.setText(spannable);
+
+            // 使用Markwon渲染Markdown
+            holder.receiverMessageTextView.setText(markdownMsg);
         }
+
+        // 点击后Voice按钮后将
+        holder.userVoice.setOnClickListener(v->{
+            // 用户消息
+            // 将要播放的消息传回去
+            if (mListener != null) {
+                mListener.onItemClick(msg);
+            }
+
+        });
+
+        holder.receiveVoice.setOnClickListener(v->{
+            // Ai消息
+            // 同上
+            if (mListener != null) {
+                mListener.onItemClick(msg);
+            }
+        });
 
 //        int ChatSize = getItemCount();
 //        if(position == ChatSize-1 && ) {
@@ -99,7 +132,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         public TextView receiverName;
         public TextView userMessageTextView;
         public TextView receiverMessageTextView;
-        public LinearLayout msgTime_L;
+        public LinearLayout msgTime_L;  // 时间, 待定
+        public Button userVoice;
+        public Button receiveVoice;
 
 
         public ViewHolder(View itemView) {
@@ -108,10 +143,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             receiverMessageTextView = itemView.findViewById(R.id.messageReceive);
 
             userIcon = itemView.findViewById(R.id.user_icon);
-            receiverIcon = itemView.findViewById(R.id.bot_icon);
+            receiverIcon = itemView.findViewById(R.id.receive_icon);
 
             userName = itemView.findViewById(R.id.user_name);
             receiverName = itemView.findViewById(R.id.bot_name);
+
+            userVoice = itemView.findViewById(R.id.userVoice);
+            receiveVoice = itemView.findViewById(R.id.receiveVoice);
 
             // todo
             /*

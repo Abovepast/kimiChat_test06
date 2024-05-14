@@ -6,7 +6,7 @@
         <!-- 允许窗口内容扩展到状态栏 -->
         <item name="android:windowFullscreen">false</item>
         <!-- 使状态栏透明 -->
-        <item name="android:windowTranslucentStatus">true</item>
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
         <!-- 或者对于Android P及以上版本，可使用以下属性实现更灵活的状态栏控制 -->
         <item name="android:windowLightStatusBar">true</item> <!-- 根据需要设置状态栏图标颜色 -->
         <item name="android:statusBarColor">@android:color/transparent</item>
